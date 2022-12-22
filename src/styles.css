@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.header {
+  background-color: #353b47;
+  position: fixed;
+  width: 100vw;
+  height: 7vh;
+  top:0;
+  left: 0;
+  right: 0;
+}
+
+.mainScreenContainer {
+  background-color: #3c3c4d;
+  height: 93vh;
+  width: 100vw;
+  top: 7vh;
+  position: fixed;
+  /* padding: 10vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 2.5vh;
+  color: white;
+}
+
+.plantContainer {
+  /* background-color: aqua; */
+  display: flex;
+  position: relative;
+  align-self: center;
+  justify-content: center;
+  margin-top: 2vh;
+  width: 56vw;
+  height: 56vw;
+  border-radius: 50%;
+  background: conic-gradient(mediumslateblue 0deg, rosybrown 0deg);
+
+  -webkit-transition: background 2s ease-in-out;
+  transition: background 2s ease-in-out;
+}
+
+.plant {
+  display: flex;
+  position: relative;
+  align-self: center;
+  justify-content: center;
+  background-color:bisque;
+  border-radius: 50%;
+  /* border:  2.5vw solid rosybrown; */
+  width: 51vw;
+  height: 51vw;
+  z-index: 1;
+}
+
+.plantImage {
+  display: flex;
+  position: relative;
+  align-self: center;
+  align-content: center;
+  max-height: 20vh;
+  height: 20vh;
+  translate: 1vw;
+}
+
+.radius {
+  width: 6vw;
+  height: 56vw;
+  /* background-color: red; */
+  position: fixed;
+  transform: rotate(0deg);
+  /* display: flex;
+  align-self: center;
+  justify-content: center; */
+  z-index: 3;
+}
+
+.radiusCircle { 
+  background-color: mediumslateblue;
+  position: fixed;
+  translate: 0 -1.7vw;
+  width: 6vw;
+  height: 6vw;
+  border-radius: 50%;
+  z-index: 7;
+}
+
+.radiusCircle:active {
+  width: 7vw;
+  height: 7vw;
+  translate: -0.5vw -2.15vw;
+
+}
+
+.timer {
+  /* background-color: red; */
+  font-size: 10vh;
+}
+
+.mainScreenButtons {
+  background-color: mediumslateblue;
+  font-size: 2vh;
+  min-width: 20vh;
+  padding: 1.5vh;
+  color: white;
+  border: 0;
+  border-radius: 1.2vh;
+  box-shadow: 0px 5px rgb(40, 35, 66);
+}
+

@@ -1,9 +1,19 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Hammer from "rc-hammerjs";
 
 // let lastStep = 0;
 
 const Radius = (props) => {
+  // useEffect(() => {
+  //   return document.querySelector(".plantContainer").addEventListener(
+  //     "touchmove",
+  //     (e) => {
+  //       e.preventDefault();
+  //     },
+  //     { passive: false }
+  //   );
+  // });
+
   const lastStep = useRef(0);
 
   const rotateCircle = (element, degree) => {
@@ -20,60 +30,64 @@ const Radius = (props) => {
   };
 
   const handlePan = (event) => {
-    if (event.target.className === "radius") {
-      let rect = event.target.parentElement.getBoundingClientRect();
+    if (
+      event.target.className === "radius" ||
+      event.target.className === "radiusCircle"
+    ) {
+      // console.log("handlePan");
 
-      let x = (event.center.x - rect.x) / rect.width; //x position within the element.
-      let y = (event.center.y - rect.y) / rect.height; //y position within the element.
+      let rect;
+      if (event.target.className === "radius")
+        rect = event.target.parentElement.getBoundingClientRect();
+      if (event.target.className === "radiusCircle")
+        rect = event.target.parentElement.parentElement.getBoundingClientRect();
 
-      let degree;
-      if (x > 0.5 || lastStep.current < 11) {
-        degree = Math.floor(y * 180);
-      } else {
-        degree = Math.floor(180 + (1 - y) * 180);
-      }
+      let x = (event.center.x - rect.x) / rect.width - 0.5; //x position within the element.
+      let y = 0.5 - (event.center.y - rect.y) / rect.height; //y position within the element.
+
+      let atan = (Math.atan2(y, x) * 180) / 3.1415;
+      if (atan < -180) atan = -180;
+      if (atan > 180) atan = 180;
+
+      let degree = 0;
+
+      if (atan <= 90 && atan >= -180) degree = -atan + 90;
+      if (atan > 90 && atan <= 180) degree = -atan + 450;
 
       const interval = 180 / 11;
       let integer = Math.floor(degree / interval);
       let decimal = degree - integer;
-      let step = decimal >= 0.45 ? integer + 1 : integer;
-
-      // console.log(integer, lastStep.current, step);
-
-      if (Math.abs(step - lastStep.current) > 5) step = lastStep.current;
-      lastStep.current = step;
-
-      if (step <= 0) step = 0;
-      if (step >= 22) step = 22;
+      let step = decimal >= 0.5 ? integer + 1 : integer;
 
       rotateCircle(document.querySelector(".radius"), step * interval);
+
       props.setTimeStep(step);
     }
   };
 
-  const hammerOptions = {
-    touchAction: "compute",
-    recognizers: {
-      // tap: {
-      //     // time: 200,
-      //     threshold: 10
-      //     }
-      press: {
-        // time: 3000
-        threshold: 1,
-        // threshold: 3
-      },
-    },
-  };
+  // const hammerOptions = {
+  //   touchAction: "compute",
+  //   recognizers: {
+  //     tap: {
+  //       time: 1,
+  //       threshold: 1,
+  //     },
+  //     press: {
+  //       //   // time: 3000
+  //       threshold: 1,
+  //     },
+  //     pan: {
+  //       threshold: 100,
+  //       // direction: "DIRECTION_ALL",
+  //     },
+  //   },
+  // };
 
   return (
     <Hammer
       onPan={handlePan}
-      // onPanStart={handlePanStart}
-      // onPanEnd={handlePanEnd}
-      // onPanCancel={handlePanCancel}
-      options={hammerOptions}
-      direction="DIRECTION_ALL"
+      // options={hammerOptions}
+      // direction="DIRECTION_ALL"
     >
       <div className="radius">
         <div className="radiusCircle"></div>

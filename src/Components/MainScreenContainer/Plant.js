@@ -16,7 +16,7 @@ const Plant = (props) => {
       plantContainerBoundaries = document
         .querySelector(".plantContainer")
         .getBoundingClientRect();
-      console.log(plantContainerBoundaries);
+      // console.log(plantContainerBoundaries);
     }
   }, []);
 

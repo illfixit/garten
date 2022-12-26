@@ -42,7 +42,7 @@ body {
 }
 
 .header {
-  background-color: #d62bab;
+  background-color: #565968;
   position: fixed;
   width: 100vw;
   height: 7vh;
@@ -131,7 +131,16 @@ body {
   width: 10vw;
   height: 10vw;
   translate: -1.2vw -2.6vw;
+}
 
+.noRadius {
+  background: none!important;
+  -webkit-transition: background 2s ease-in-out;
+  transition: background 2s ease-in-out;
+}
+
+.hidden {
+  display: none;
 }
 
 .timer {
@@ -150,3 +159,7 @@ body {
   box-shadow: 0px 5px rgb(40, 35, 66);
 }
 
+.mainScreenButtons:active {
+  translate: 0 3px 0;
+  box-shadow: 0px 2px rgb(40, 35, 66);
+}

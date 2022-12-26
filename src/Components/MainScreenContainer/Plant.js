@@ -21,11 +21,13 @@ const Plant = (props) => {
   }, []);
 
   return (
-    <div className="plantContainer">
+    <div className={`plantContainer ${props.timerActive ? "noRadius" : ""}`}>
       <Radius
         plantContainerBoundaries={plantContainerBoundaries}
         setTimeStep={props.setTimeStep}
+        timerActive={props.timerActive}
       />
+
       <div className="plant">
         <img
           className="plantImage"

@@ -14,7 +14,13 @@ const Radius = (props) => {
   //   );
   // });
 
-  const lastStep = useRef(0);
+  const step = useRef(0);
+  const interval = 180 / 11;
+
+  useEffect(() => {
+    console.log("toggle Timer: active: ", props.timerActive, step.current);
+    rotateCircle(document.querySelector(".radius"), step.current * interval);
+  }, [props.timerActive]);
 
   const rotateCircle = (element, degree) => {
     let transformString = `rotate(${degree}deg) scale(1) skewX(0deg) skewY(0deg)`;
@@ -53,15 +59,18 @@ const Radius = (props) => {
 
       if (atan <= 90 && atan >= -180) degree = -atan + 90;
       if (atan > 90 && atan <= 180) degree = -atan + 450;
+      if (degree > 0 && degree < 10) degree = 0;
 
-      const interval = 180 / 11;
       let integer = Math.floor(degree / interval);
       let decimal = degree - integer;
-      let step = decimal >= 0.5 ? integer + 1 : integer;
 
-      rotateCircle(document.querySelector(".radius"), step * interval);
+      let newStep = decimal >= 0.5 ? integer + 1 : integer;
+      step.current =
+        Math.abs(step.current - newStep) > 3 ? step.current : newStep;
 
-      props.setTimeStep(step);
+      rotateCircle(document.querySelector(".radius"), step.current * interval);
+
+      props.setTimeStep(step.current);
     }
   };
 
@@ -89,8 +98,10 @@ const Radius = (props) => {
       // options={hammerOptions}
       // direction="DIRECTION_ALL"
     >
-      <div className="radius">
-        <div className="radiusCircle"></div>
+      <div className={`radius${props.timerActive ? " hidden" : ""}`}>
+        <div
+          className={`radiusCircle${props.timerActive ? " hidden" : ""}`}
+        ></div>
       </div>
     </Hammer>
   );

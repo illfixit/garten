@@ -10,18 +10,23 @@ const MainScreen = (props) => {
   return (
     <div className="mainScreenContainer">
       {/* <FocusText /> */}
-      <div>
+      {/* <div>
         You have focused <br /> for 6 hours 35 mins today.{" "}
-      </div>
-      <Plant setTimeStep={setTimeStep} timerActive={timerActive} />
-      <div>+ Work</div>
-      {/* <FocusTag /> */}
-      <Timer
+      </div> */}
+      <Plant
         timeStep={timeStep}
         setTimeStep={setTimeStep}
         timerActive={timerActive}
         setTimerActive={setTimerActive}
       />
+      {/* <div>+ Work</div> */}
+      {/* <FocusTag /> */}
+      {/* <Timer
+        timeStep={timeStep}
+        setTimeStep={setTimeStep}
+        timerActive={timerActive}
+        setTimerActive={setTimerActive}
+      /> */}
       <Buttons timerActive={timerActive} setTimerActive={setTimerActive} />
     </div>
   );

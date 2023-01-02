@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Radius from "./Radius";
+import Timer from "./Timer";
 
 const Plant = (props) => {
   // if (document.querySelector("plantContainer")) {
@@ -29,10 +30,17 @@ const Plant = (props) => {
       />
 
       <div className="plant">
-        <img
+        {/* <img
           className="plantImage"
           src="./static/images/flowers/orchid.png"
-        ></img>
+        ></img> */}
+
+        <Timer
+          timeStep={props.timeStep}
+          setTimeStep={props.setTimeStep}
+          timerActive={props.timerActive}
+          setTimerActive={props.setTimerActive}
+        />
       </div>
     </div>
   );

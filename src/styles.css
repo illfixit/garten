@@ -1,3 +1,7 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Norican&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -64,10 +68,12 @@ body {
   justify-content: space-evenly;
   font-size: 2.5vh;
   color: white;
+  z-index: 1;
 }
 
 .plantContainer {
   /* background-color: aqua; */
+  z-index: 3;
   display: flex;
   position: relative;
   align-self: center;
@@ -75,6 +81,8 @@ body {
   margin-top: 2vh;
   width: 70vw;
   height: 70vw;
+  max-width: 70vw;
+  max-height: 70vh;
   border-radius: 50%;
   background: conic-gradient(mediumslateblue 0deg, rosybrown 0deg);
 
@@ -89,13 +97,16 @@ body {
   justify-content: center;
   background-color:bisque;
   border-radius: 50%;
+
   /* border:  2.5vw solid rosybrown; */
   width: 63vw;
   height: 63vw;
-  z-index: 1;
+  max-width: 63vw;
+  max-height: 63vh;
+  z-index: 3;
 }
 
-.plantImage {
+/* .plantImage {
   display: flex;
   position: relative;
   align-self: center;
@@ -103,18 +114,19 @@ body {
   max-height: 20vh;
   height: 20vh;
   translate: 1vw;
-}
+} */
 
 .radius {
   width: 7vw;
   height: 70vw;
   /* background-color: red; */
+  display: block;
   position: fixed;
   transform: rotate(0deg);
   /* display: flex;
   align-self: center;
   justify-content: center; */
-  z-index: 3;
+  z-index: 5;
 }
 
 .radiusCircle { 
@@ -143,9 +155,58 @@ body {
   display: none;
 }
 
+.timerContainer {
+  box-sizing:border-box;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  width: 63vw;
+  height: 63vw;
+  max-width: 63vw;
+  max-height: 63vh;
+  border-radius: 50%;
+  /* background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYD1SneXnG84Sy8pgheS1NeLr-PHaPE0L11A&usqp=CAU); */
+
+  /* filter: brightness(0.8); */
+
+}
+
+.timerBackground {
+  background: url(https://i.pinimg.com/originals/ab/e1/72/abe17294582423e00db65c85aba185d8.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  display: flex;
+  width: 63vw;
+  height: 63vw;
+  max-width: 63vw;
+  max-height: 63vh;
+  border-radius: 50%;
+  filter: brightness(0.9);
+}
+
+.timerBorder {
+  border: -3vw solid red;
+}
+
+
 .timer {
   /* background-color: red; */
-  font-size: 10vh;
+  /* font-family: 'Satisfy', cursive; */
+  /* font-family: 'Great Vibes', cursive; */
+  font-family: 'Norican', cursive;
+
+  display: flex;
+  position: absolute;
+  font-size: 16vw;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* translate: 0 2vw; */
+  text-shadow: #252627 2.5px 2.5px;
+
 }
 
 .mainScreenButtons {

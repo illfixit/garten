@@ -41,8 +41,11 @@ const Timer = ({ timeStep, setTimeStep, timerActive, setTimerActive }) => {
   let seconds = totalSeconds - Math.floor(totalSeconds / 60) * 60;
 
   return (
-    <div className="timer">
-      {formatTime(minutes)}:{formatTime(seconds)}
+    <div className={`timerContainer`}>
+      <div className="timerBackground"></div>
+      <div className="timer">
+        {formatTime(minutes)}:{formatTime(seconds)}
+      </div>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const Buttons = ({ timerActive, setTimerActive }) => {
     </React.Fragment>
   ) : (
     <button className="mainScreenButtons" onClick={() => setTimerActive(true)}>
-      Plant
+      Start
     </button>
   );
 };

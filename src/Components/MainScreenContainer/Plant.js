@@ -1,8 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Radius from "./Radius";
 import Timer from "./Timer";
 
+import Buttons from "./Buttons";
+
 const Plant = (props) => {
+  const [timeStep, setTimeStep] = useState(0);
+  const [timerActive, setTimerActive] = useState(false);
+
   // if (document.querySelector("plantContainer")) {
   //   let plantContainer = document
   //     .querySelector("plantContainer")
@@ -22,27 +27,30 @@ const Plant = (props) => {
   }, []);
 
   return (
-    <div className={`plantContainer ${props.timerActive ? "noRadius" : ""}`}>
-      <Radius
-        plantContainerBoundaries={plantContainerBoundaries}
-        setTimeStep={props.setTimeStep}
-        timerActive={props.timerActive}
-      />
-
-      <div className="plant">
-        {/* <img
-          className="plantImage"
-          src="./static/images/flowers/orchid.png"
-        ></img> */}
-
-        <Timer
-          timeStep={props.timeStep}
-          setTimeStep={props.setTimeStep}
-          timerActive={props.timerActive}
-          setTimerActive={props.setTimerActive}
+    <>
+      <div className={`plantContainer ${timerActive ? "noRadius" : ""}`}>
+        <Radius
+          plantContainerBoundaries={plantContainerBoundaries}
+          setTimeStep={setTimeStep}
+          timerActive={timerActive}
+          startStep={props.startStep}
+          setStartStep={props.setStartStep}
         />
+
+        <div className="plant">
+          <Timer
+            startStep={props.startStep}
+            timeStep={timeStep}
+            setTimeStep={setTimeStep}
+            timerActive={timerActive}
+            setTimerActive={setTimerActive}
+            currentActivity={props.currentActivity}
+            setCurrentActivity={props.setCurrentActivity}
+          />
+        </div>
       </div>
-    </div>
+      <Buttons timerActive={timerActive} setTimerActive={setTimerActive} />
+    </>
   );
 };
 

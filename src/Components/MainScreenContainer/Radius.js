@@ -14,7 +14,9 @@ const Radius = (props) => {
   //   );
   // });
 
-  const step = useRef(0);
+  // console.log(props.startStep);
+
+  const step = useRef(props.startStep);
   const interval = 180 / 11.5;
 
   useEffect(() => {
@@ -71,6 +73,7 @@ const Radius = (props) => {
       rotateCircle(document.querySelector(".radius"), step.current * interval);
 
       props.setTimeStep(step.current);
+      props.setStartStep(step.current);
     }
   };
 

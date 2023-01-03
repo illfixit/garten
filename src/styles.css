@@ -16,7 +16,7 @@
 html {
   height: -webkit-fill-available;
   /* overflow: hidden; */
-  /* overflow-y: auto; */
+  overflow-y: auto;
   /* -webkit-overflow-scrolling: touch; */
 }
 
@@ -60,17 +60,65 @@ body {
   /* height: 93vh; */
   height: 100%;
   width: 100%;
-  top: 7vh;
+  top: 0;
   position: fixed;
   /* padding: 10vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content:flex-start;
   font-size: 2rem;
   color: white;
   z-index: 1;
 }
+
+.sessionControlContainer {
+  display: flex;
+  position: relative;
+  width: auto;
+  font-size: 1.4rem;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  /* background-color: cornflowerblue; */
+  border-radius: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  box-shadow: 0px 7px rgb(40, 35, 66);
+
+}
+
+.sessionControlButtons {
+  background-color: mediumslateblue;
+
+  padding: 0.6rem 1.2rem 0.9rem 1.2rem ;
+  display: flex;
+
+
+  -webkit-transition: translate 0.1s linear;
+  transition: translate 0.1s linear;
+}
+
+.sessionControlButtons:first-of-type {
+  border-radius: 1rem 0 0 1rem;
+  border-right: 1px solid darkslateblue;
+}
+
+.sessionControlButtons:last-of-type {
+  border-radius: 0rem 1rem 1rem 0;
+  border-left: 1px solid darkslateblue;
+}
+
+.sessionControlActive {
+  background-color: rgb(98, 84, 187);
+  translate: 0 1px 0;
+
+}
+
+
+
+
 
 .plantContainer {
   /* background-color: aqua; */
@@ -86,6 +134,7 @@ body {
   max-height: 70vh;
   border-radius: 50%;
   background: conic-gradient(mediumslateblue 0deg, rosybrown 0deg);
+  margin-bottom: 3rem;
 
 
 }
@@ -95,10 +144,9 @@ body {
   position: relative;
   align-self: center;
   justify-content: center;
-  background-color:bisque;
+  /* background-color:bisque; */
   border-radius: 50%;
 
-  /* border:  2.5vw solid rosybrown; */
   width: 63vw;
   height: 63vw;
   max-width: 63vh;
@@ -147,9 +195,8 @@ body {
 }
 
 .noRadius {
-  background: none!important;
-  -webkit-transition: background 2s ease-in-out;
-  transition: background 2s ease-in-out;
+  background: rosybrown!important;
+
 }
 
 .hidden {
@@ -169,11 +216,14 @@ body {
   /* background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYD1SneXnG84Sy8pgheS1NeLr-PHaPE0L11A&usqp=CAU); */
 
   /* filter: brightness(0.8); */
+  /* -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; */
 
 }
 
-.timerBackground {
 
+
+.timerBackground {
   position: absolute;
   display: flex;
   width: 63vw;
@@ -198,10 +248,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
+
 }
 
 .timerBorder {
-  border: -3vw solid red;
+  /* border: -3vw solid red; */
 }
 
 
@@ -232,10 +283,13 @@ body {
   color: white;
   border: 0;
   border-radius: 1.2vh;
-  box-shadow: 0px 5px rgb(40, 35, 66);
+  box-shadow: 0px 6px rgb(40, 35, 66);
+  margin-bottom: 2rem;
+  -webkit-transition: translate 0.23s linear;
+  transition: translate 0.23s linear;
 }
 
 .mainScreenButtons:active {
   translate: 0 3px 0;
-  box-shadow: 0px 2px rgb(40, 35, 66);
+  box-shadow: 0px 3px rgb(40, 35, 66);
 }

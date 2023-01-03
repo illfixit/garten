@@ -57,8 +57,9 @@ body {
 
 .mainScreenContainer {
   background-color: #3c3c4d;
-  height: 93vh;
-  width: 100vw;
+  /* height: 93vh; */
+  height: 100%;
+  width: 100%;
   top: 7vh;
   position: fixed;
   /* padding: 10vh; */
@@ -66,7 +67,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  font-size: 2.5vh;
+  font-size: 2rem;
   color: white;
   z-index: 1;
 }
@@ -81,13 +82,12 @@ body {
   margin-top: 2vh;
   width: 70vw;
   height: 70vw;
-  max-width: 70vw;
+  max-width: 70vh;
   max-height: 70vh;
   border-radius: 50%;
   background: conic-gradient(mediumslateblue 0deg, rosybrown 0deg);
 
-  -webkit-transition: background 2s ease-in-out;
-  transition: background 2s ease-in-out;
+
 }
 
 .plant {
@@ -101,7 +101,7 @@ body {
   /* border:  2.5vw solid rosybrown; */
   width: 63vw;
   height: 63vw;
-  max-width: 63vw;
+  max-width: 63vh;
   max-height: 63vh;
   z-index: 3;
 }
@@ -119,6 +119,7 @@ body {
 .radius {
   width: 7vw;
   height: 70vw;
+  max-height: 70vh;
   /* background-color: red; */
   display: block;
   position: fixed;
@@ -162,7 +163,7 @@ body {
   display: flex;
   width: 63vw;
   height: 63vw;
-  max-width: 63vw;
+  max-width: 63vh;
   max-height: 63vh;
   border-radius: 50%;
   /* background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYD1SneXnG84Sy8pgheS1NeLr-PHaPE0L11A&usqp=CAU); */
@@ -172,17 +173,31 @@ body {
 }
 
 .timerBackground {
-  background: url(https://i.pinimg.com/originals/ab/e1/72/abe17294582423e00db65c85aba185d8.gif);
-  background-repeat: no-repeat;
-  background-size: cover;
+
   position: absolute;
   display: flex;
   width: 63vw;
   height: 63vw;
-  max-width: 63vw;
+  max-width: 63vh;
   max-height: 63vh;
   border-radius: 50%;
   filter: brightness(0.9);
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+.pauseBackground {
+  background: url(https://media0.giphy.com/media/XPdR7H122vZ1C/giphy.gif?cid=790b7611f6dfedca30056047728a8ae9027975ad8723943a&rid=giphy.gif&ct=g);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+}
+
+.sessionBackground {
+  background: url(https://i.pinimg.com/originals/ab/e1/72/abe17294582423e00db65c85aba185d8.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
 }
 
 .timerBorder {

@@ -12,6 +12,8 @@ const Timer = ({ timeStep, setTimeStep, timerActive, setTimerActive }) => {
 
   useEffect(() => {
     if (totalSeconds == -1) {
+      let audio = new Audio("./static/sounds/uplifting-flute.mp3");
+      audio.play();
       clearInterval(intrvl);
       setTimerActive(false);
       setTotalSeconds((10 + timeStep * 5) * 60);
@@ -42,7 +44,11 @@ const Timer = ({ timeStep, setTimeStep, timerActive, setTimerActive }) => {
 
   return (
     <div className={`timerContainer`}>
-      <div className="timerBackground"></div>
+      <div
+        className={`timerBackground ${
+          timerActive ? " sessionBackground" : "pauseBackground"
+        }`}
+      ></div>
       <div className="timer">
         {formatTime(minutes)}:{formatTime(seconds)}
       </div>

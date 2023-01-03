@@ -7,6 +7,13 @@ const MainScreen = (props) => {
   const [timeStep, setTimeStep] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
 
+  const handleRangeInput = (e) => {
+    // console.log("e", e.target.value);
+    document.querySelector(
+      ".timerBackground"
+    ).style.backgroundPosition = `${100 - e.target.value}%`;
+  };
+
   return (
     <div className="mainScreenContainer">
       {/* <FocusText /> */}
@@ -27,6 +34,16 @@ const MainScreen = (props) => {
         timerActive={timerActive}
         setTimerActive={setTimerActive}
       /> */}
+      {/* <input
+        type="range"
+        id="bg_position"
+        name="bg_position"
+        min="0"
+        max="100"
+        // value="50"
+        onChange={handleRangeInput}
+      ></input> */}
+      {/* <input id="bg_url" placeholder="Paste link to your GIF here"></input> */}
       <Buttons timerActive={timerActive} setTimerActive={setTimerActive} />
     </div>
   );

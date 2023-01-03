@@ -18,7 +18,7 @@ const Radius = (props) => {
   const interval = 180 / 11;
 
   useEffect(() => {
-    console.log("toggle Timer: active: ", props.timerActive, step.current);
+    // console.log("toggle Timer: active: ", props.timerActive, step.current);
     rotateCircle(document.querySelector(".radius"), step.current * interval);
   }, [props.timerActive]);
 

@@ -15,7 +15,7 @@ const Radius = (props) => {
   // });
 
   const step = useRef(0);
-  const interval = 180 / 11;
+  const interval = 180 / 11.5;
 
   useEffect(() => {
     // console.log("toggle Timer: active: ", props.timerActive, step.current);

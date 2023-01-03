@@ -7,7 +7,7 @@ const Timer = ({ timeStep, setTimeStep, timerActive, setTimerActive }) => {
   const formatTime = (time) => time.toString().padStart(2, "0");
 
   useEffect(() => {
-    setTotalSeconds((10 + timeStep * 5) * 60);
+    setTotalSeconds((5 + timeStep * 5) * 60);
   }, [timeStep]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Timer = ({ timeStep, setTimeStep, timerActive, setTimerActive }) => {
       audio.play();
       clearInterval(intrvl);
       setTimerActive(false);
-      setTotalSeconds((10 + timeStep * 5) * 60);
+      setTotalSeconds((5 + timeStep * 5) * 60);
       setTimeStep(timeStep);
     }
   });
@@ -32,7 +32,7 @@ const Timer = ({ timeStep, setTimeStep, timerActive, setTimerActive }) => {
       );
     } else {
       setTimeStep(timeStep);
-      setTotalSeconds((10 + timeStep * 5) * 60);
+      setTotalSeconds((5 + timeStep * 5) * 60);
       clearInterval(intrvl);
     }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import SessionPlant from "./SessionPlant";
 import PausePlant from "./PausePlant";
@@ -7,8 +7,30 @@ import SessionControl from "./SessionControl";
 
 const MainScreen = (props) => {
   const [currentActivity, setCurrentActivity] = useState("pause");
-  const [sessionStartStep, setSessionStartStep] = useState(9);
   const [pauseStartStep, setPauseStartStep] = useState(1);
+  const [sessionStartStep, setSessionStartStep] = useState(9);
+
+  const [pauseGIFSArray, setPauseGIFSArray] = useState([
+    "https://media0.giphy.com/media/XPdR7H122vZ1C/giphy.gif?cid=790b7611f6dfedca30056047728a8ae9027975ad8723943a&rid=giphy.gif&ct=g",
+  ]);
+  const [sessionGIFSArray, setSessionGIFSArray] = useState([
+    "https://i.pinimg.com/originals/ab/e1/72/abe17294582423e00db65c85aba185d8.gif",
+  ]);
+
+  const [currentSessionGIF, setCurrentSessionGIF] = useState(0);
+  const [currentPauseGIF, setCurrentPauseGIF] = useState(0);
+
+  // useEffect(() => {
+  //   if (
+  //     document.getElementById("pauseBackground") &&
+  //     document.getElementById("sessionBackground")
+  //   ) {
+  //     document.getElementById("pauseBackground").style.backgroundImage =
+  //       pauseGIFSArray[currentPauseGIF];
+  //     document.getElementById("sessionBackground").style.backgroundImage =
+  //       sessionGIFSArray[currentSessionGIF];
+  //   }
+  // });
 
   // const handleRangeInput = (e) => {
   //   // console.log("e", e.target.value);
@@ -30,6 +52,10 @@ const MainScreen = (props) => {
           setCurrentActivity={setCurrentActivity}
           sessionStartStep={sessionStartStep}
           setSessionStartStep={setSessionStartStep}
+          GIFSArray={sessionGIFSArray}
+          setGIFSArray={setSessionGIFSArray}
+          currentGIF={currentSessionGIF}
+          setCurrentGIF={setCurrentSessionGIF}
         />
       ) : (
         <PausePlant
@@ -37,6 +63,10 @@ const MainScreen = (props) => {
           setCurrentActivity={setCurrentActivity}
           pauseStartStep={pauseStartStep}
           setPauseStartStep={setPauseStartStep}
+          GIFSArray={pauseGIFSArray}
+          setGIFSArray={setPauseGIFSArray}
+          currentGIF={currentPauseGIF}
+          setCurrentGIF={setCurrentPauseGIF}
         />
       )}
 

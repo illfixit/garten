@@ -8,6 +8,8 @@ const Timer = ({
   setTimerActive,
   currentActivity,
   setCurrentActivity,
+  GIFSArray,
+  currentGIF,
 }) => {
   const [totalSeconds, setTotalSeconds] = useState((5 + startStep * 5) * 60);
   const [intrvl, setIntrvl] = useState(0);
@@ -61,6 +63,9 @@ const Timer = ({
     seconds = 0;
   }
 
+  // console.log(GIFSArray[currentGIF]);
+  // backgroundImage: GIFSArray[currentGIF]
+
   return (
     <div className="timerContainer">
       <div
@@ -69,6 +74,7 @@ const Timer = ({
             ? "sessionBackground"
             : "pauseBackground"
         }`}
+        style={{ backgroundImage: `url(${GIFSArray[currentGIF]})` }}
       ></div>
       <div className="timer">
         {formatTime(minutes)}:{formatTime(seconds)}

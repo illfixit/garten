@@ -8,6 +8,10 @@ const SessionPlant = (props) => {
       setCurrentActivity={props.setCurrentActivity}
       startStep={props.sessionStartStep}
       setStartStep={props.setSessionStartStep}
+      GIFSArray={props.GIFSArray}
+      setGIFSArray={props.setGIFSArray}
+      currentGIF={props.currentGIF}
+      setCurrentGIF={props.setCurrentGIF}
     />
   );
 };

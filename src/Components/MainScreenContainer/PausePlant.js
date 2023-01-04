@@ -8,6 +8,10 @@ const PausePlant = (props) => {
       setCurrentActivity={props.setCurrentActivity}
       startStep={props.pauseStartStep}
       setStartStep={props.setPauseStartStep}
+      GIFSArray={props.GIFSArray}
+      setGIFSArray={props.setGIFSArray}
+      currentGIF={props.currentGIF}
+      setCurrentGIF={props.setCurrentGIF}
     />
   );
 };

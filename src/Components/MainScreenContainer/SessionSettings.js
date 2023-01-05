@@ -2,7 +2,10 @@ import React from "react";
 
 const SessionSettings = (props) => {
   const decreaseNumberOfSessions = () => {
-    if (props.numberOfSessions > 1)
+    if (
+      props.numberOfSessions > 1 &&
+      props.numberOfSessions > props.currentSession
+    )
       props.setNumberOfSessions(props.numberOfSessions - 1);
   };
 

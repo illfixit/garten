@@ -59,6 +59,7 @@ const Plant = (props) => {
       </div>
       <Buttons timerActive={timerActive} setTimerActive={setTimerActive} />
       <SessionSettings
+        currentSession={props.currentSession}
         numberOfSessions={props.numberOfSessions}
         setNumberOfSessions={props.setNumberOfSessions}
       />

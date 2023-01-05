@@ -12,6 +12,10 @@ const SessionPlant = (props) => {
       setGIFSArray={props.setGIFSArray}
       currentGIF={props.currentGIF}
       setCurrentGIF={props.setCurrentGIF}
+      numberOfSessions={props.numberOfSessions}
+      setNumberOfSessions={props.setNumberOfSessions}
+      currentSession={props.currentSession}
+      setCurrentSession={props.setCurrentSession}
     />
   );
 };

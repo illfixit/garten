@@ -2,6 +2,7 @@ import React from "react";
 import Plant from "./Plant";
 
 const PausePlant = (props) => {
+  console.log(props);
   return (
     <Plant
       currentActivity={props.currentActivity}
@@ -12,6 +13,10 @@ const PausePlant = (props) => {
       setGIFSArray={props.setGIFSArray}
       currentGIF={props.currentGIF}
       setCurrentGIF={props.setCurrentGIF}
+      numberOfSessions={props.numberOfSessions}
+      setNumberOfSessions={props.setNumberOfSessions}
+      currentSession={props.currentSession}
+      setCurrentSession={props.setCurrentSession}
     />
   );
 };

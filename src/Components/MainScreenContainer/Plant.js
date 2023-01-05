@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import Radius from "./Radius";
 import Timer from "./Timer";
 import PlantSettings from "./PlantSettings";
+import SessionSettings from "./SessionSettings";
 
 import Buttons from "./Buttons";
 
 const Plant = (props) => {
+  console.log(props);
   const [timeStep, setTimeStep] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
 
@@ -49,10 +51,17 @@ const Plant = (props) => {
             setCurrentActivity={props.setCurrentActivity}
             GIFSArray={props.GIFSArray}
             currentGIF={props.currentGIF}
+            numberOfSessions={props.numberOfSessions}
+            currentSession={props.currentSession}
+            setCurrentSession={props.setCurrentSession}
           />
         </div>
       </div>
       <Buttons timerActive={timerActive} setTimerActive={setTimerActive} />
+      <SessionSettings
+        numberOfSessions={props.numberOfSessions}
+        setNumberOfSessions={props.setNumberOfSessions}
+      />
       <PlantSettings
         currentActivity={props.currentActivity}
         GIFSArray={props.GIFSArray}

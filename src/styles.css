@@ -279,6 +279,19 @@ body {
 
 }
 
+.timerText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  translate: 0 3.5rem;
+  z-index: 7;
+  width: 100%;
+  text-shadow: #252627 1px 1px;
+
+  /* background-color: red; */
+}
+
 .mainScreenButtons {
   background-color: mediumslateblue;
   font-size: 1.6rem;
@@ -311,13 +324,14 @@ body {
   justify-content: center;
   align-items: center;
   /* background-color: darkred; */
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
   margin-bottom: 5rem;
 }
 
 .settings_options {
   display: flex;
   width: 90vw;
+  font-size: 1.3rem;
   height: auto;
   flex-direction: row;
   justify-content: space-around;
@@ -371,13 +385,42 @@ body {
 }
 
 .delete_button {
-  background-color:firebrick;
+  background-color:rgb(236, 17, 17);
 }
 
 .delete_button:active {
-  background-color:rgb(236, 17, 17);
+  background-color:firebrick;
 }
 
 .gif_preview {
   max-height: 5rem;
 }
+
+.sessionSettingsButton {
+  font-size: 1.2rem;
+  width: 3.5rem;
+  background-color: mediumslateblue;
+  color: white;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  /* margin-left: 1rem; */
+  translate: 0 -2px 0;
+  box-shadow: 0px 3px rgb(40, 35, 66);
+  cursor: pointer;
+}
+
+.sessionSettingsButton:active {
+  translate: 0 1px 0;
+  background-color: rgb(113, 91, 236);
+  box-shadow: 0px 1px rgb(40, 35, 66);
+}
+
+.noButton {
+  background-color:rgb(236, 17, 17);
+}
+
+.noButton:active {
+  background-color: firebrick;
+}
+

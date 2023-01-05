@@ -10,6 +10,9 @@ const Timer = ({
   setCurrentActivity,
   GIFSArray,
   currentGIF,
+  numberOfSessions,
+  currentSession,
+  setCurrentSession,
 }) => {
   const [totalSeconds, setTotalSeconds] = useState((5 + startStep * 5) * 60);
   const [intrvl, setIntrvl] = useState(0);
@@ -53,6 +56,7 @@ const Timer = ({
     audio.play();
     clearInterval(intrvl);
     setTimerActive(false);
+    if (currentActivity === "session") setCurrentSession(currentSession + 1);
     setCurrentActivity(currentActivity === "pause" ? "session" : "pause");
     // setTotalSeconds((5 + timeStep * 5) * 60);
     // setTimeStep(timeStep);
@@ -78,6 +82,11 @@ const Timer = ({
       ></div>
       <div className="timer">
         {formatTime(minutes)}:{formatTime(seconds)}
+      </div>
+      <div className="timerText">
+        {currentActivity === "session"
+          ? `Session ${currentSession}/${numberOfSessions}`
+          : "Pause"}
       </div>
     </div>
   );

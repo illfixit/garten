@@ -9,6 +9,8 @@ const MainScreen = (props) => {
   const [currentActivity, setCurrentActivity] = useState("pause");
   const [pauseStartStep, setPauseStartStep] = useState(1);
   const [sessionStartStep, setSessionStartStep] = useState(9);
+  const [numberOfSessions, setNumberOfSessions] = useState(2);
+  const [currentSession, setCurrentSession] = useState(1);
 
   const [pauseGIFSArray, setPauseGIFSArray] = useState([
     "https://media0.giphy.com/media/XPdR7H122vZ1C/giphy.gif?cid=790b7611f6dfedca30056047728a8ae9027975ad8723943a&rid=giphy.gif&ct=g",
@@ -56,6 +58,10 @@ const MainScreen = (props) => {
           setGIFSArray={setSessionGIFSArray}
           currentGIF={currentSessionGIF}
           setCurrentGIF={setCurrentSessionGIF}
+          numberOfSessions={numberOfSessions}
+          setNumberOfSessions={setNumberOfSessions}
+          currentSession={currentSession}
+          setCurrentSession={setCurrentSession}
         />
       ) : (
         <PausePlant
@@ -67,6 +73,10 @@ const MainScreen = (props) => {
           setGIFSArray={setPauseGIFSArray}
           currentGIF={currentPauseGIF}
           setCurrentGIF={setCurrentPauseGIF}
+          numberOfSessions={numberOfSessions}
+          setNumberOfSessions={setNumberOfSessions}
+          currentSession={currentSession}
+          setCurrentSession={setCurrentSession}
         />
       )}
 

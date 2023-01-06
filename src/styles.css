@@ -337,7 +337,7 @@ body {
   justify-content: space-around;
   align-items: center;
   background-color: rgba(25, 14, 63, 0.29);
-  padding: 1rem 0.3rem;
+  padding: 1.3rem 0.5rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
   border: 2px dashed rgb(189, 189, 189);

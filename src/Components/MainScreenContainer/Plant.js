@@ -8,7 +8,7 @@ import Buttons from "./Buttons";
 
 const Plant = (props) => {
   // console.log(props);
-  const [timeStep, setTimeStep] = useState(0);
+  const [timeStep, setTimeStep] = useState(props.startStep);
   const [timerActive, setTimerActive] = useState(false);
 
   // if (document.querySelector("plantContainer")) {

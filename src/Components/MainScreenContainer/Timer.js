@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 const minMinutes = 5;
+// const sec = 1;
+const stepLength = 5;
 
 const Timer = ({
   startStep,
@@ -18,29 +20,31 @@ const Timer = ({
   autoSwitch,
   setAutoSwitch,
 }) => {
-  const [totalSeconds, setTotalSeconds] = useState((5 + startStep * 5) * 60);
+  const [totalSeconds, setTotalSeconds] = useState(
+    (minMinutes + startStep * stepLength) * 60
+  );
   const [intrvl, setIntrvl] = useState(0);
 
-  useEffect(() => {
-    setTimeStep(startStep);
-  });
+  setTimeStep(startStep);
 
   const formatTime = (time) => time.toString().padStart(2, "0");
 
   const audio = new Audio("./static/sounds/uplifting-flute.mp3");
 
   useEffect(() => {
-    setTotalSeconds((minMinutes + timeStep * 5) * 60);
+    setTotalSeconds((minMinutes + timeStep * stepLength) * 60);
   }, [timeStep, startStep]);
 
   useEffect(() => {
     // console.log("timerActive ", timerActive, " autoSwitch ", autoSwitch);
+    // console.log("timerActive useEffect");
+
     if (
       autoSwitch &&
       currentSession !== 1 &&
       currentSession <= numberOfSessions + 1
     ) {
-      console.log(currentSession, numberOfSessions, currentActivity);
+      // console.log(currentSession, numberOfSessions, currentActivity);
 
       if (currentSession > numberOfSessions) {
         if (currentActivity === "pause") setTimerActive(true);
@@ -59,7 +63,7 @@ const Timer = ({
       );
     } else {
       setTimeStep(timeStep);
-      setTotalSeconds((minMinutes + timeStep * 5) * 60);
+      setTotalSeconds((minMinutes + timeStep * stepLength) * 60);
       clearInterval(intrvl);
     }
 
@@ -71,16 +75,29 @@ const Timer = ({
   let minutes = Math.floor(totalSeconds / 60);
   let seconds = totalSeconds - Math.floor(totalSeconds / 60) * 60;
 
-  if (totalSeconds === 0) {
+  if (totalSeconds === 0 && timerActive) {
+    // console.log("timeStep", timeStep);
+    // console.log("totalSeconds === 0");
     audio.play();
     clearInterval(intrvl);
     if (currentActivity === "session") setCurrentSession(currentSession + 1);
-    setCurrentActivity(currentActivity === "pause" ? "session" : "pause");
-    if (autoSwitch) {
-      setTimerActive(true);
+    if (currentSession <= numberOfSessions) {
+      // console.log("next activity");
+      setCurrentActivity(currentActivity === "pause" ? "session" : "pause");
+
+      if (autoSwitch) {
+        setTimerActive(true);
+      } else {
+        setTimerActive(false);
+      }
     } else {
-      setTimerActive(false);
+      if (currentActivity === "pause") {
+        // console.log("top pause");
+        setAutoSwitch(false);
+        setTimerActive(false);
+      }
     }
+
     // setTotalSeconds((5 + timeStep * 5) * 60);
     // setTimeStep(timeStep);
   }

@@ -2,7 +2,7 @@ import React from "react";
 import Plant from "./Plant";
 
 const PausePlant = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <Plant
       currentActivity={props.currentActivity}
@@ -17,6 +17,8 @@ const PausePlant = (props) => {
       setNumberOfSessions={props.setNumberOfSessions}
       currentSession={props.currentSession}
       setCurrentSession={props.setCurrentSession}
+      autoSwitch={props.autoSwitch}
+      setAutoSwitch={props.setAutoSwitch}
     />
   );
 };

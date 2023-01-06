@@ -11,13 +11,46 @@ const MainScreen = (props) => {
   const [sessionStartStep, setSessionStartStep] = useState(9);
   const [numberOfSessions, setNumberOfSessions] = useState(2);
   const [currentSession, setCurrentSession] = useState(1);
+  const [autoSwitch, setAutoSwitch] = useState(false);
 
-  const [pauseGIFSArray, setPauseGIFSArray] = useState([
-    "https://media0.giphy.com/media/XPdR7H122vZ1C/giphy.gif?cid=790b7611f6dfedca30056047728a8ae9027975ad8723943a&rid=giphy.gif&ct=g",
-  ]);
-  const [sessionGIFSArray, setSessionGIFSArray] = useState([
-    "https://i.pinimg.com/originals/ab/e1/72/abe17294582423e00db65c85aba185d8.gif",
-  ]);
+  useEffect(() => {
+    if (
+      localStorage.getItem("pauseGIFSArray") === null ||
+      localStorage.getItem("pauseGIFSArray") === [] ||
+      localStorage.getItem("pauseGIFSArray") === undefined
+    ) {
+      localStorage.setItem(
+        "pauseGIFSArray",
+        JSON.stringify([
+          "https://media0.giphy.com/media/XPdR7H122vZ1C/giphy.gif?cid=790b7611f6dfedca30056047728a8ae9027975ad8723943a&rid=giphy.gif&ct=g",
+        ])
+      );
+    }
+
+    if (
+      localStorage.getItem("sessionGIFSArray") === null ||
+      localStorage.getItem("sessionGIFSArray") === [] ||
+      localStorage.getItem("sessionGIFSArray") === undefined
+    ) {
+      localStorage.setItem(
+        "sessionGIFSArray",
+        JSON.stringify([
+          "https://i.pinimg.com/originals/ab/e1/72/abe17294582423e00db65c85aba185d8.gif",
+        ])
+      );
+    }
+  }, []);
+
+  const [pauseGIFSArray, setPauseGIFSArray] = useState(
+    JSON.parse(localStorage.getItem("pauseGIFSArray")) || [
+      "https://media0.giphy.com/media/XPdR7H122vZ1C/giphy.gif?cid=790b7611f6dfedca30056047728a8ae9027975ad8723943a&rid=giphy.gif&ct=g",
+    ]
+  );
+  const [sessionGIFSArray, setSessionGIFSArray] = useState(
+    JSON.parse(localStorage.getItem("sessionGIFSArray")) || [
+      "https://i.pinimg.com/originals/ab/e1/72/abe17294582423e00db65c85aba185d8.gif",
+    ]
+  );
 
   const [currentSessionGIF, setCurrentSessionGIF] = useState(0);
   const [currentPauseGIF, setCurrentPauseGIF] = useState(0);
@@ -62,6 +95,8 @@ const MainScreen = (props) => {
           setNumberOfSessions={setNumberOfSessions}
           currentSession={currentSession}
           setCurrentSession={setCurrentSession}
+          autoSwitch={autoSwitch}
+          setAutoSwitch={setAutoSwitch}
         />
       ) : (
         <PausePlant
@@ -77,6 +112,8 @@ const MainScreen = (props) => {
           setNumberOfSessions={setNumberOfSessions}
           currentSession={currentSession}
           setCurrentSession={setCurrentSession}
+          autoSwitch={autoSwitch}
+          setAutoSwitch={setAutoSwitch}
         />
       )}
 

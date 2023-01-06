@@ -7,7 +7,7 @@ import SessionSettings from "./SessionSettings";
 import Buttons from "./Buttons";
 
 const Plant = (props) => {
-  console.log(props);
+  // console.log(props);
   const [timeStep, setTimeStep] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
 
@@ -54,14 +54,22 @@ const Plant = (props) => {
             numberOfSessions={props.numberOfSessions}
             currentSession={props.currentSession}
             setCurrentSession={props.setCurrentSession}
+            autoSwitch={props.autoSwitch}
+            setAutoSwitch={props.setAutoSwitch}
           />
         </div>
       </div>
-      <Buttons timerActive={timerActive} setTimerActive={setTimerActive} />
+      <Buttons
+        timerActive={timerActive}
+        setTimerActive={setTimerActive}
+        setAutoSwitch={props.setAutoSwitch}
+      />
       <SessionSettings
         currentSession={props.currentSession}
         numberOfSessions={props.numberOfSessions}
         setNumberOfSessions={props.setNumberOfSessions}
+        autoSwitch={props.autoSwitch}
+        setAutoSwitch={props.setAutoSwitch}
       />
       <PlantSettings
         currentActivity={props.currentActivity}

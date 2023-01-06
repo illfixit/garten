@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+const minMinutes = 5;
+
 const Timer = ({
   startStep,
   timeStep,
@@ -13,6 +15,8 @@ const Timer = ({
   numberOfSessions,
   currentSession,
   setCurrentSession,
+  autoSwitch,
+  setAutoSwitch,
 }) => {
   const [totalSeconds, setTotalSeconds] = useState((5 + startStep * 5) * 60);
   const [intrvl, setIntrvl] = useState(0);
@@ -26,10 +30,25 @@ const Timer = ({
   const audio = new Audio("./static/sounds/uplifting-flute.mp3");
 
   useEffect(() => {
-    setTotalSeconds((5 + timeStep * 5) * 60);
+    setTotalSeconds((minMinutes + timeStep * 5) * 60);
   }, [timeStep, startStep]);
 
   useEffect(() => {
+    // console.log("timerActive ", timerActive, " autoSwitch ", autoSwitch);
+    if (
+      autoSwitch &&
+      currentSession !== 1 &&
+      currentSession <= numberOfSessions + 1
+    ) {
+      console.log(currentSession, numberOfSessions, currentActivity);
+
+      if (currentSession > numberOfSessions) {
+        if (currentActivity === "pause") setTimerActive(true);
+        if (currentActivity === "session") setTimerActive(false);
+      } else {
+        setTimerActive(true);
+      }
+    }
     if (timerActive) {
       setIntrvl(
         setInterval(() => {
@@ -40,7 +59,7 @@ const Timer = ({
       );
     } else {
       setTimeStep(timeStep);
-      setTotalSeconds((5 + timeStep * 5) * 60);
+      setTotalSeconds((minMinutes + timeStep * 5) * 60);
       clearInterval(intrvl);
     }
 
@@ -55,9 +74,13 @@ const Timer = ({
   if (totalSeconds === 0) {
     audio.play();
     clearInterval(intrvl);
-    setTimerActive(false);
     if (currentActivity === "session") setCurrentSession(currentSession + 1);
     setCurrentActivity(currentActivity === "pause" ? "session" : "pause");
+    if (autoSwitch) {
+      setTimerActive(true);
+    } else {
+      setTimerActive(false);
+    }
     // setTotalSeconds((5 + timeStep * 5) * 60);
     // setTimeStep(timeStep);
   }

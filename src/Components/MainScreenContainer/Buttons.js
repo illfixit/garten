@@ -1,11 +1,14 @@
 import React from "react";
 
-const Buttons = ({ timerActive, setTimerActive }) => {
+const Buttons = ({ timerActive, setTimerActive, setAutoSwitch }) => {
   return timerActive ? (
     <React.Fragment>
       <button
         className="mainScreenButtons"
-        onClick={() => setTimerActive(false)}
+        onClick={() => {
+          setTimerActive(false);
+          setAutoSwitch(false);
+        }}
       >
         Give Up
       </button>

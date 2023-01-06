@@ -14,7 +14,28 @@ const SessionSettings = (props) => {
   };
 
   return (
-    <div classname="sessionSettings">
+    <div className="sessionSettings">
+      <div className="settings_options">
+        <p>Auto start next session/pause?</p>
+        <div className="autoStartButtonsContainer">
+          <button
+            className={`autoStartButtons ${
+              props.autoSwitch ? "autoStartButtonsActive" : ""
+            }`}
+            onClick={() => props.setAutoSwitch(true)}
+          >
+            Yes
+          </button>
+          <button
+            className={`autoStartButtons ${
+              props.autoSwitch ? "" : "autoStartButtonsActive"
+            }`}
+            onClick={() => props.setAutoSwitch(false)}
+          >
+            No
+          </button>
+        </div>
+      </div>
       <div className="settings_options">
         <p>How many sessions today?</p>
         <button
@@ -33,11 +54,6 @@ const SessionSettings = (props) => {
           +
         </button>
       </div>
-      {/* <div className="settings_options">
-        <p>Auto start next session/pause?</p>
-        <button className="sessionSettingsButton">Yes</button>
-        <button className="sessionSettingsButton noButton">No</button>
-      </div> */}
     </div>
   );
 };

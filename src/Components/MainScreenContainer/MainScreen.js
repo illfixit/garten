@@ -11,7 +11,7 @@ const MainScreen = (props) => {
   const [sessionStartStep, setSessionStartStep] = useState(9);
   const [numberOfSessions, setNumberOfSessions] = useState(2);
   const [currentSession, setCurrentSession] = useState(1);
-  const [autoSwitch, setAutoSwitch] = useState(false);
+  const [autoSwitch, setAutoSwitch] = useState(true);
 
   useEffect(() => {
     if (

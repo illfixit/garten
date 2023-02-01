@@ -9,7 +9,6 @@ import Buttons from "./Buttons";
 const Plant = (props) => {
   // console.log(props);
   const [timeStep, setTimeStep] = useState(props.startStep);
-  const [timerActive, setTimerActive] = useState(false);
 
   // if (document.querySelector("plantContainer")) {
   //   let plantContainer = document
@@ -31,11 +30,11 @@ const Plant = (props) => {
 
   return (
     <>
-      <div className={`plantContainer ${timerActive ? "noRadius" : ""}`}>
+      <div className={`plantContainer ${props.timerActive ? "noRadius" : ""}`}>
         <Radius
           plantContainerBoundaries={plantContainerBoundaries}
           setTimeStep={setTimeStep}
-          timerActive={timerActive}
+          timerActive={props.timerActive}
           startStep={props.startStep}
           setStartStep={props.setStartStep}
         />
@@ -45,8 +44,8 @@ const Plant = (props) => {
             startStep={props.startStep}
             timeStep={timeStep}
             setTimeStep={setTimeStep}
-            timerActive={timerActive}
-            setTimerActive={setTimerActive}
+            timerActive={props.timerActive}
+            setTimerActive={props.setTimerActive}
             currentActivity={props.currentActivity}
             setCurrentActivity={props.setCurrentActivity}
             GIFSArray={props.GIFSArray}
@@ -60,16 +59,19 @@ const Plant = (props) => {
         </div>
       </div>
       <Buttons
-        timerActive={timerActive}
-        setTimerActive={setTimerActive}
+        timerActive={props.timerActive}
+        setTimerActive={props.setTimerActive}
         setAutoSwitch={props.setAutoSwitch}
       />
       <SessionSettings
         currentSession={props.currentSession}
+        setCurrentSession={props.setCurrentSession}
         numberOfSessions={props.numberOfSessions}
         setNumberOfSessions={props.setNumberOfSessions}
         autoSwitch={props.autoSwitch}
         setAutoSwitch={props.setAutoSwitch}
+        timerActive={props.timerActive}
+        setTimerActive={props.setTimerActive}
       />
       <PlantSettings
         currentActivity={props.currentActivity}

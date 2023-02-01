@@ -11,6 +11,21 @@ const SessionSettings = (props) => {
 
   const increaseNumberOfSessions = () => {
     props.setNumberOfSessions(props.numberOfSessions + 1);
+    props.setAutoSwitch(true);
+  };
+
+  const decreaseNumberOfCurrentSession = () => {
+    if (props.currentSession > 1) {
+      props.setCurrentSession(props.currentSession - 1);
+      props.setAutoSwitch(true);
+    }
+  };
+
+  const increaseNumberOfCurrentSession = () => {
+    props.setCurrentSession(props.currentSession + 1);
+    if (props.currentSession > props.numberOfSessions - 1) {
+      props.setNumberOfSessions(props.numberOfSessions + 1);
+    }
   };
 
   return (
@@ -50,6 +65,25 @@ const SessionSettings = (props) => {
           id="moreSessions"
           className="sessionSettingsButton"
           onClick={increaseNumberOfSessions}
+        >
+          +
+        </button>
+      </div>
+
+      <div className="settings_options">
+        <p>Number of current session</p>
+        <button
+          id="minusCurrentSession"
+          className="sessionSettingsButton"
+          onClick={decreaseNumberOfCurrentSession}
+        >
+          -
+        </button>
+        <p id="numberOfSessions">{props.currentSession}</p>
+        <button
+          id="plusCurrentSession"
+          className="sessionSettingsButton"
+          onClick={increaseNumberOfCurrentSession}
         >
           +
         </button>

@@ -12,6 +12,7 @@ const MainScreen = (props) => {
   const [numberOfSessions, setNumberOfSessions] = useState(2);
   const [currentSession, setCurrentSession] = useState(1);
   const [autoSwitch, setAutoSwitch] = useState(true);
+  const [timerActive, setTimerActive] = useState(false);
 
   useEffect(() => {
     if (
@@ -97,6 +98,8 @@ const MainScreen = (props) => {
           setCurrentSession={setCurrentSession}
           autoSwitch={autoSwitch}
           setAutoSwitch={setAutoSwitch}
+          timerActive={timerActive}
+          setTimerActive={setTimerActive}
         />
       ) : (
         <PausePlant
@@ -114,6 +117,8 @@ const MainScreen = (props) => {
           setCurrentSession={setCurrentSession}
           autoSwitch={autoSwitch}
           setAutoSwitch={setAutoSwitch}
+          timerActive={timerActive}
+          setTimerActive={setTimerActive}
         />
       )}
 

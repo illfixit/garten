@@ -36,23 +36,20 @@ const Timer = ({
   }, [timeStep, startStep]);
 
   useEffect(() => {
-    // console.log("timerActive ", timerActive, " autoSwitch ", autoSwitch);
-    // console.log("timerActive useEffect");
+    // if (
+    //   autoSwitch &&
+    //   currentSession !== 1 &&
+    //   currentSession <= numberOfSessions + 1
+    // ) {
+    //   // console.log(currentSession, numberOfSessions, currentActivity);
 
-    if (
-      autoSwitch &&
-      currentSession !== 1 &&
-      currentSession <= numberOfSessions + 1
-    ) {
-      // console.log(currentSession, numberOfSessions, currentActivity);
-
-      if (currentSession > numberOfSessions) {
-        if (currentActivity === "pause") setTimerActive(true);
-        if (currentActivity === "session") setTimerActive(false);
-      } else {
-        setTimerActive(true);
-      }
-    }
+    //   if (currentSession > numberOfSessions) {
+    //     if (currentActivity === "pause") setTimerActive(true);
+    //     if (currentActivity === "session") setTimerActive(false);
+    //   } else {
+    //     setTimerActive(true);
+    //   }
+    // }
     if (timerActive) {
       setIntrvl(
         setInterval(() => {
@@ -80,19 +77,27 @@ const Timer = ({
     // console.log("totalSeconds === 0");
     audio.play();
     clearInterval(intrvl);
-    if (currentActivity === "session") setCurrentSession(currentSession + 1);
-    if (currentSession <= numberOfSessions) {
-      // console.log("next activity");
-      setCurrentActivity(currentActivity === "pause" ? "session" : "pause");
+    // console.log(currentActivity, " ", currentSession, "/", numberOfSessions);
 
-      if (autoSwitch) {
-        setTimerActive(true);
-      } else {
-        setTimerActive(false);
-      }
-    } else {
+    // console.log(autoSwitch, timerActive);
+
+    if (currentSession < numberOfSessions) {
+      // console.log(currentSession, " < ", numberOfSessions);
       if (currentActivity === "pause") {
-        // console.log("top pause");
+        setCurrentSession(currentSession + 1);
+      }
+
+      setCurrentActivity(currentActivity === "pause" ? "session" : "pause");
+      setTimerActive(autoSwitch);
+    }
+
+    if (currentSession === numberOfSessions) {
+      // console.log(currentSession, " = ", numberOfSessions);
+
+      if (currentActivity === "session") {
+        setCurrentActivity(currentActivity === "pause" ? "session" : "pause");
+        setTimerActive(autoSwitch);
+      } else if (currentActivity === "pause") {
         setAutoSwitch(false);
         setTimerActive(false);
       }
@@ -126,7 +131,7 @@ const Timer = ({
       <div className="timerText">
         {currentActivity === "session"
           ? `Session ${currentSession}/${numberOfSessions}`
-          : "Pause"}
+          : `Pause`}
       </div>
     </div>
   );

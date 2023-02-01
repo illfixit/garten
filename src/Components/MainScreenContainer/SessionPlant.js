@@ -18,6 +18,8 @@ const SessionPlant = (props) => {
       setCurrentSession={props.setCurrentSession}
       autoSwitch={props.autoSwitch}
       setAutoSwitch={props.setAutoSwitch}
+      timerActive={props.timerActive}
+      setTimerActive={props.setTimerActive}
     />
   );
 };

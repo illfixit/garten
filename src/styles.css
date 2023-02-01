@@ -276,7 +276,9 @@ body {
   align-items: center;
   /* translate: 0 2vw; */
   text-shadow: #252627 2.5px 2.5px;
-
+  border-radius: 50%;
+  box-shadow: inset 0px 1px 20px 10px rgb(0 0 0 / 55%);
+  
 }
 
 .timerText {

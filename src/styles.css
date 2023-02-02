@@ -13,13 +13,7 @@
   -webkit-tap-highlight-color: rgba(0,0,0,0); */
 }
 
-html {
-  /* height: -webkit-fill-available; */
-  /* overflow: hidden; */
-  /* overflow-y: auto; */
-  /* -webkit-overflow-scrolling: touch; */
 
-}
 
 body {
   /* width: 100vw;
@@ -142,6 +136,7 @@ body {
   background: conic-gradient(mediumslateblue 0deg, rosybrown 0deg);
   margin-bottom: 3rem;
 
+  animation: 1s ease-in-out infinite;
 
 }
 
@@ -248,17 +243,6 @@ body {
   transition: background 0.3s ease-in-out;
 }
 
-#pauseBackground {
-  /* background-image: url(https://media0.giphy.com/media/XPdR7H122vZ1C/giphy.gif?cid=790b7611f6dfedca30056047728a8ae9027975ad8723943a&rid=giphy.gif&ct=g); */
-
-}
-
-#sessionBackground {
-  /* background-image: url(https://i.pinimg.com/originals/ab/e1/72/abe17294582423e00db65c85aba185d8.gif); */
-}
-
-
-
 
 .timer {
   /* background-color: red; */
@@ -268,7 +252,7 @@ body {
 
   display: flex;
   position: absolute;
-  font-size: 16vw;
+  font-size: 5rem;
   width: 100%;
   height: 100%;
   display: flex;

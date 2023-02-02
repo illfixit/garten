@@ -30,7 +30,7 @@ const Plant = (props) => {
 
   return (
     <>
-      <div className={`plantContainer ${props.timerActive ? "noRadius" : ""}`}>
+      <div className={`plantContainer ${props.timerActive ? "" : ""}`}>
         <Radius
           plantContainerBoundaries={plantContainerBoundaries}
           setTimeStep={setTimeStep}

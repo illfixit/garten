@@ -50,11 +50,20 @@ const Timer = ({
     //     setTimerActive(true);
     //   }
     // }
+
     if (timerActive) {
       setIntrvl(
         setInterval(() => {
           if (timerActive === true) {
-            setTotalSeconds((totalSeconds) => totalSeconds - 1);
+            setTotalSeconds((totalSeconds) => {
+              // console.log(totalSeconds);
+              document.getElementsByClassName(
+                "plantContainer"
+              )[0].style.background = `conic-gradient(mediumslateblue ${(totalSeconds /
+                ((minMinutes + startStep * stepLength) * 60)) *
+                360}deg, rosybrown 0deg)`;
+              return totalSeconds - 1;
+            });
           }
         }, 1000)
       );

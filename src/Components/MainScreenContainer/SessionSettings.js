@@ -53,40 +53,44 @@ const SessionSettings = (props) => {
       </div>
       <div className="settings_options">
         <p>How many sessions today?</p>
-        <button
-          id="lessSessions"
-          className="sessionSettingsButton"
-          onClick={decreaseNumberOfSessions}
-        >
-          -
-        </button>
-        <p id="numberOfSessions">{props.numberOfSessions}</p>
-        <button
-          id="moreSessions"
-          className="sessionSettingsButton"
-          onClick={increaseNumberOfSessions}
-        >
-          +
-        </button>
+        <span className="sessionSettingsButtonsContainer">
+          <button
+            id="lessSessions"
+            className="sessionSettingsButton"
+            onClick={decreaseNumberOfSessions}
+          >
+            -
+          </button>
+          <p id="numberOfSessions">{props.numberOfSessions}</p>
+          <button
+            id="moreSessions"
+            className="sessionSettingsButton"
+            onClick={increaseNumberOfSessions}
+          >
+            +
+          </button>
+        </span>
       </div>
 
       <div className="settings_options">
         <p>Number of current session</p>
-        <button
-          id="minusCurrentSession"
-          className="sessionSettingsButton"
-          onClick={decreaseNumberOfCurrentSession}
-        >
-          -
-        </button>
-        <p id="numberOfSessions">{props.currentSession}</p>
-        <button
-          id="plusCurrentSession"
-          className="sessionSettingsButton"
-          onClick={increaseNumberOfCurrentSession}
-        >
-          +
-        </button>
+        <span className="sessionSettingsButtonsContainer">
+          <button
+            id="minusCurrentSession"
+            className="sessionSettingsButton"
+            onClick={decreaseNumberOfCurrentSession}
+          >
+            -
+          </button>
+          <p id="numberOfSessions">{props.currentSession}</p>
+          <button
+            id="plusCurrentSession"
+            className="sessionSettingsButton"
+            onClick={increaseNumberOfCurrentSession}
+          >
+            +
+          </button>
+        </span>
       </div>
     </div>
   );

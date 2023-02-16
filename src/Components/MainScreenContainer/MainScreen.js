@@ -75,6 +75,21 @@ const MainScreen = (props) => {
   //   ).style.backgroundPosition = `${100 - e.target.value}%`;
   // };
 
+  useEffect(() => {
+    function preventDefault(e) {
+      if (
+        e.target.className === "radius" ||
+        e.target.className === "radiusCircle"
+      ) {
+        e.preventDefault();
+      }
+    }
+
+    document.body.addEventListener("touchmove", preventDefault, {
+      passive: false,
+    });
+  }, []);
+
   return (
     <div className="mainScreenContainer">
       <SessionControl

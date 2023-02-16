@@ -28,7 +28,7 @@ body {
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* touch-action:none; */
+  touch-action: auto;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -37,6 +37,8 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+
 
 .os-viewport {
   -webkit-backface-visibility: hidden;
@@ -65,6 +67,8 @@ body::-webkit-scrollbar {
   top: 0;
   /* position: fixed; */
   /* overflow-y: scroll; */
+  /* overflow: scroll; */
+  -webkit-overflow-scrolling: touch;
 
   /* padding: 10vh; */
   display: flex;
@@ -74,6 +78,8 @@ body::-webkit-scrollbar {
   font-size: 2rem;
   color: white;
   z-index: 1;
+
+
 }
 
 .sessionControlContainer {

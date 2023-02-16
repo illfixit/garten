@@ -44,6 +44,8 @@ const Radius = (props) => {
     ) {
       // console.log("handlePan");
 
+      window.scrollTo(0, 0);
+
       let rect;
       if (event.target.className === "radius")
         rect = event.target.parentElement.getBoundingClientRect();

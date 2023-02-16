@@ -82,6 +82,24 @@ body::-webkit-scrollbar {
 
 }
 
+.mainComponents {
+  width: 80vw;
+  height: auto;
+  /* min-height: 70vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.secondaryComponents {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .sessionControlContainer {
   display: flex;
   position: relative;
@@ -141,6 +159,8 @@ body::-webkit-scrollbar {
   align-self: center;
   justify-content: center;
   margin-top: 2vh;
+  min-width: min(70vh, 70vw);
+  min-height: min(70vh, 70vw);
   width: 70vw;
   height: 70vw;
   max-width: 70vh;
@@ -314,6 +334,22 @@ body::-webkit-scrollbar {
   /* background-color: rgb(113, 91, 236); */
 
   box-shadow: 0px 3px rgb(40, 35, 66);
+}
+
+.toggleViewButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* background-color: mediumslateblue; */
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+
+  /* transform: rotate(90deg) translateY(-0.6rem); */
+    transform: rotate(270deg) translateY(0rem);
 }
 
 .settingsContainer {

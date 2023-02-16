@@ -4,18 +4,6 @@ import Hammer from "rc-hammerjs";
 // let lastStep = 0;
 
 const Radius = (props) => {
-  // useEffect(() => {
-  //   return document.querySelector(".plantContainer").addEventListener(
-  //     "touchmove",
-  //     (e) => {
-  //       e.preventDefault();
-  //     },
-  //     { passive: false }
-  //   );
-  // });
-
-  // console.log(props.startStep);
-
   const step = useRef(props.startStep);
   const interval = 180 / 11.5;
 
@@ -44,7 +32,7 @@ const Radius = (props) => {
     ) {
       // console.log("handlePan");
 
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
 
       let rect;
       if (event.target.className === "radius")
@@ -74,35 +62,12 @@ const Radius = (props) => {
 
       rotateCircle(document.querySelector(".radius"), step.current * interval);
 
-      props.setTimeStep(step.current);
       props.setStartStep(step.current);
     }
   };
 
-  // const hammerOptions = {
-  //   touchAction: "compute",
-  //   recognizers: {
-  //     tap: {
-  //       time: 1,
-  //       threshold: 1,
-  //     },
-  //     press: {
-  //       //   // time: 3000
-  //       threshold: 1,
-  //     },
-  //     pan: {
-  //       threshold: 100,
-  //       // direction: "DIRECTION_ALL",
-  //     },
-  //   },
-  // };
-
   return (
-    <Hammer
-      onPan={handlePan}
-      // options={hammerOptions}
-      // direction="DIRECTION_ALL"
-    >
+    <Hammer onPan={handlePan}>
       <div className={`radius${props.timerActive ? " hidden" : ""}`}>
         <div
           className={`radiusCircle${props.timerActive ? " hidden" : ""}`}

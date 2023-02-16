@@ -1,6 +1,8 @@
 import React from "react";
 
-const PlantSettings = (props) => {
+const GIFSettings = (props) => {
+  console.log(props);
+
   const addGIF = (e) => {
     // console.log(e)
 
@@ -47,7 +49,7 @@ const PlantSettings = (props) => {
     }
   };
 
-  return (
+  return props.currentActivity ? (
     <div className="settingsContainer">
       {props.GIFSArray.map((g, idx) => (
         <div
@@ -81,7 +83,7 @@ const PlantSettings = (props) => {
         </button>
       </div>
     </div>
-  );
+  ) : null;
 };
 
-export default PlantSettings;
+export default GIFSettings;

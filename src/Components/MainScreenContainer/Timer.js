@@ -4,10 +4,13 @@ const minMinutes = 5;
 // const sec = 1;
 const stepLength = 5;
 
+const testing_value = 1;
+
 const Timer = ({
   startStep,
-  timeStep,
-  setTimeStep,
+  // timeStep,
+  // setTimeStep,
+  setStartStep,
   timerActive,
   setTimerActive,
   currentActivity,
@@ -25,32 +28,15 @@ const Timer = ({
   );
   const [intrvl, setIntrvl] = useState(0);
 
-  setTimeStep(startStep);
-
   const formatTime = (time) => time.toString().padStart(2, "0");
 
   const audio = new Audio("./static/sounds/uplifting-flute.mp3");
 
   useEffect(() => {
-    setTotalSeconds((minMinutes + timeStep * stepLength) * 60);
-  }, [timeStep, startStep]);
+    setTotalSeconds((minMinutes + startStep * stepLength) * 60);
+  }, [startStep]);
 
   useEffect(() => {
-    // if (
-    //   autoSwitch &&
-    //   currentSession !== 1 &&
-    //   currentSession <= numberOfSessions + 1
-    // ) {
-    //   // console.log(currentSession, numberOfSessions, currentActivity);
-
-    //   if (currentSession > numberOfSessions) {
-    //     if (currentActivity === "pause") setTimerActive(true);
-    //     if (currentActivity === "session") setTimerActive(false);
-    //   } else {
-    //     setTimerActive(true);
-    //   }
-    // }
-
     if (timerActive) {
       setIntrvl(
         setInterval(() => {
@@ -65,11 +51,10 @@ const Timer = ({
               return totalSeconds - 1;
             });
           }
-        }, 1000)
+        }, 1000 * testing_value)
       );
     } else {
-      setTimeStep(timeStep);
-      setTotalSeconds((minMinutes + timeStep * stepLength) * 60);
+      setTotalSeconds((minMinutes + startStep * stepLength) * 60);
       clearInterval(intrvl);
     }
 

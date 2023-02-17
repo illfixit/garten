@@ -1,6 +1,6 @@
 import React from "react";
 
-const SessionControl = ({ currentActivity, setCurrentActivity }) => {
+const SessionPauseButton = ({ currentActivity, setCurrentActivity }) => {
   const changeActivity = (e) => {
     // console.log(e.target.id);
     if (e.target.id === "pause") {
@@ -40,4 +40,4 @@ const SessionControl = ({ currentActivity, setCurrentActivity }) => {
   );
 };
 
-export default SessionControl;
+export default SessionPauseButton;

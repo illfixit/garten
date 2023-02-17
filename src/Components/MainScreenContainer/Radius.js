@@ -22,7 +22,7 @@ const Radius = (props) => {
     element.style.OTransform = transformString;
     element.style.transform = transformString;
 
-    element.parentElement.style.background = `conic-gradient(mediumslateblue ${degree}deg, rosybrown 0deg)`;
+    element.parentElement.style.background = `conic-gradient(var(--mainColor) ${degree}deg, var(--secondaryColor) 0deg)`;
   };
 
   const handlePan = (event) => {

@@ -45,9 +45,9 @@ const Timer = ({
               // console.log(totalSeconds);
               document.getElementsByClassName(
                 "plantContainer"
-              )[0].style.background = `conic-gradient(mediumslateblue ${(totalSeconds /
+              )[0].style.background = `conic-gradient(var(--mainColor) ${(totalSeconds /
                 ((minMinutes + startStep * stepLength) * 60)) *
-                360}deg, rosybrown 0deg)`;
+                360}deg, var(--secondaryColor) 0deg)`;
               return totalSeconds - 1;
             });
           }

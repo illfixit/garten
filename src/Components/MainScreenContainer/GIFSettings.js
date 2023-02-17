@@ -50,7 +50,7 @@ const GIFSettings = (props) => {
   };
 
   return props.currentActivity ? (
-    <div className="settingsContainer">
+    <div>
       {props.GIFSArray.map((g, idx) => (
         <div
           className="settings_options"

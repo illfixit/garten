@@ -5,6 +5,7 @@ import Plant from "./Plant";
 import StartStopButton from "./StartStopButton";
 import SessionSettings from "./SessionSettings";
 import GIFSettings from "./GIFSettings";
+import LookSettings from "./LookSettings";
 
 import ToggleViewButton from "./ToggleViewButton";
 
@@ -141,6 +142,7 @@ const MainScreen = (props) => {
           timerActive={timerActive}
           setTimerActive={setTimerActive}
         />
+        <LookSettings />
         {currentActivity === "session" ? (
           <GIFSettings
             key={currentActivity}

@@ -3,7 +3,8 @@ import { hslToHex, getColor, setColor } from "./utils";
 
 const defBGColor = getColor("backgroundColor");
 const defBGColorArr = defBGColor
-  .substring(5, defBGColor.length - 1)
+  .split("(")[1]
+  .split(")")[0]
   .split(",")
   .map((el) => parseFloat(el));
 
@@ -11,7 +12,8 @@ const [bgh, bgs, bgl] = defBGColorArr;
 
 const defMainColor = getColor("mainColor");
 const defMainColorArr = defMainColor
-  .substring(5, defMainColor.length - 1)
+  .split("(")[1]
+  .split(")")[0]
   .split(",")
   .map((el) => el.trim());
 

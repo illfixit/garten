@@ -6,13 +6,19 @@ const ToggleViewButton = (props) => {
   const toggleView = () => {
     if (view === "compact") {
       document.getElementsByClassName("toggleViewButton")[0].style.transform =
-        "rotate(90deg) translateY(-0.6rem)";
+        "rotate(90deg) translateY(-0.3rem)";
+      document.getElementsByClassName(
+        "toggleViewButton"
+      )[0].style.webkitTransform = "rotate(90deg) translateY(-0.3rem)";
       document.getElementsByClassName("mainComponents")[0].style.height =
         "100vh";
       setView("full");
     } else {
       document.getElementsByClassName("toggleViewButton")[0].style.transform =
-        "rotate(270deg) translateY(0rem)";
+        "rotate(270deg) translateY(-0.38rem)";
+      document.getElementsByClassName(
+        "toggleViewButton"
+      )[0].style.webkitTransform = "rotate(270deg) translateY(-0.38rem)";
       document.getElementsByClassName("mainComponents")[0].style.height =
         "auto";
       setView("compact");

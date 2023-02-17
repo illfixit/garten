@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Radius from "./Radius";
 import Timer from "./Timer";
 
 const Plant = (props) => {
-  console.log(props);
+  // console.log(props);
 
   let plantContainerBoundaries = null;
 
@@ -13,10 +13,6 @@ const Plant = (props) => {
         .querySelector(".plantContainer")
         .getBoundingClientRect();
     }
-  }, []);
-
-  useEffect(() => {
-    return console.log("lol");
   }, []);
 
   return (

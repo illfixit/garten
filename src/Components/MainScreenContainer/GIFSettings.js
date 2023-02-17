@@ -1,7 +1,7 @@
 import React from "react";
 
 const GIFSettings = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const addGIF = (e) => {
     // console.log(e)

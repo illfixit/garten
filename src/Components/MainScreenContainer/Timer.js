@@ -37,6 +37,98 @@ const Timer = ({
   }, [startStep]);
 
   useEffect(() => {
+    let timeOut;
+    let intervalStop;
+    let intervalStart;
+    let op = 100;
+
+    let evli = document.body.addEventListener("mousemove", (e) => {
+      // console.log("mm", timeOut, intervalStart, intervalStop, op);
+
+      function decreaseOpacity() {
+        intervalStop = setInterval(() => {
+          if (op >= 2) {
+            // console.log("decreaseOpacity", op);
+            op = op - 2;
+            Array.from(
+              document.getElementsByClassName("sessionSettings")
+            ).forEach((el) => (el.style.opacity = op / 100));
+
+            Array.from(
+              document.getElementsByClassName("settings_options")
+            ).forEach((el) => (el.style.opacity = op / 100));
+
+            document.getElementsByClassName(
+              "sessionControlContainer"
+            )[0].style.opacity = op / 100;
+            document.getElementsByClassName(
+              "mainScreenButtons"
+            )[0].style.opacity = op / 100;
+          } else {
+            clearInterval(intervalStop);
+            intervalStop = null;
+          }
+        }, 20);
+      }
+
+      function increaseOpacity() {
+        if (!intervalStart) {
+          intervalStart = setInterval(() => {
+            // console.log("increaseOpacity", op);
+
+            if (op < 100) {
+              op = op + 5;
+              Array.from(
+                document.getElementsByClassName("sessionSettings")
+              ).forEach((el) => (el.style.opacity = op / 100));
+
+              Array.from(
+                document.getElementsByClassName("settings_options")
+              ).forEach((el) => (el.style.opacity = op / 100));
+
+              document.getElementsByClassName(
+                "sessionControlContainer"
+              )[0].style.opacity = op / 100;
+              document.getElementsByClassName(
+                "mainScreenButtons"
+              )[0].style.opacity = op / 100;
+            } else {
+              clearInterval(intervalStart);
+              intervalStart = null;
+            }
+          }, 50);
+
+          return intervalStart;
+        }
+      }
+
+      const mouse_stopped = () => {
+        // console.log("mouse_stopped");
+
+        clearTimeout(timeOut);
+
+        clearInterval(intervalStart);
+        decreaseOpacity();
+      };
+
+      if (op < 100) {
+        let intrvl = increaseOpacity();
+        //   setTimeout(() => {
+        //     clearInterval(intrvl);
+        //   }, 1500);
+        // } else {
+        //   clearInterval(intervalStart);
+      }
+
+      clearTimeout(timeOut);
+      timeOut = setTimeout(mouse_stopped, 3900);
+      clearInterval(intervalStop);
+    });
+
+    return document.body.removeEventListener("mousemove", evli);
+  }, []);
+
+  useEffect(() => {
     if (timerActive) {
       setIntrvl(
         setInterval(() => {

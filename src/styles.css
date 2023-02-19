@@ -82,6 +82,7 @@
   -webkit-user-select: none;
   -webkit-touch-callout:none;
   -webkit-tap-highlight-color: rgba(0,0,0,0); */
+
 }
 
 
@@ -109,6 +110,22 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+
+@-moz-document url-prefix() { /* Disable scrollbar Firefox */
+  html{
+    scrollbar-width: none;
+  }
+}
+body {
+  margin: 0; /* remove default margin */
+  scrollbar-width: none; /* Also needed to disable scrollbar Firefox */
+  -ms-overflow-style: none;  /* Disable scrollbar IE 10+ */
+  overflow-y: scroll;
+}
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* Disable scrollbar Chrome/Safari/Webkit */
+}
 
 
 .os-viewport {
@@ -169,7 +186,13 @@ body::-webkit-scrollbar {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  -webkit-animation: changeOpacity 3s linear;
+  -moz-animation: changeOpacity 3s linear;
+  -ms-animation: changeOpacity 3s linear;
+  animation: changeOpacity 3s linear;
 }
+
+
 
 .sessionControlContainer {
   display: flex;
@@ -291,8 +314,8 @@ body::-webkit-scrollbar {
   translate: -50% -25%;
   width: 7vw;
   height: 7vw;
-  max-width: 5rem;
-  max-height: 5rem;
+  max-width: min(5rem, 7vw, 7vh);
+  max-height: min(5rem, 7vw, 7vh);
   border-radius: 50%;
   z-index: 7;
   cursor: pointer;
@@ -363,7 +386,7 @@ body::-webkit-scrollbar {
 
   display: flex;
   position: absolute;
-  font-size: min(16vw, 6rem);
+  font-size: min(min(16vw, 6rem), 18vh);
   width: 100%;
   height: 100%;
   display: flex;
@@ -380,8 +403,8 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: min(6vw, 3.5rem);
-  translate: 0 min(6rem, 12vw);
+  font-size: min(min(6vw, 3.5rem), 8vh);
+  translate: 0 min(6rem, 12vw, 12vh);
   z-index: 7;
   width: 100%;
   text-shadow: #252627 2px 2px;

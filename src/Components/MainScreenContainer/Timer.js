@@ -36,97 +36,97 @@ const Timer = ({
     setTotalSeconds((minMinutes + startStep * stepLength) * 60);
   }, [startStep]);
 
-  // useEffect(() => {
-  //   let timeOut;
-  //   let intervalStop;
-  //   let intervalStart;
-  //   let op = 100;
+  useEffect(() => {
+    let timeOut;
+    let intervalStop;
+    let intervalStart;
+    let op = 100;
 
-  //   let evli = document.body.addEventListener("mousemove", (e) => {
-  //     // console.log("mm", timeOut, intervalStart, intervalStop, op);
+    let evli = document.body.addEventListener("mousemove", (e) => {
+      // console.log("mm", timeOut, intervalStart, intervalStop, op);
 
-  //     function decreaseOpacity() {
-  //       intervalStop = setInterval(() => {
-  //         if (op >= 2) {
-  //           // console.log("decreaseOpacity", op);
-  //           op = op - 2;
-  //           Array.from(
-  //             document.getElementsByClassName("sessionSettings")
-  //           ).forEach((el) => (el.style.opacity = op / 100));
+      function decreaseOpacity() {
+        intervalStop = setInterval(() => {
+          if (op >= 2) {
+            // console.log("decreaseOpacity", op);
+            op = op - 2;
+            Array.from(
+              document.getElementsByClassName("sessionSettings")
+            ).forEach((el) => (el.style.opacity = op / 100));
 
-  //           Array.from(
-  //             document.getElementsByClassName("settings_options")
-  //           ).forEach((el) => (el.style.opacity = op / 100));
+            Array.from(
+              document.getElementsByClassName("settings_options")
+            ).forEach((el) => (el.style.opacity = op / 100));
 
-  //           document.getElementsByClassName(
-  //             "sessionControlContainer"
-  //           )[0].style.opacity = op / 100;
-  //           document.getElementsByClassName(
-  //             "mainScreenButtons"
-  //           )[0].style.opacity = op / 100;
-  //         } else {
-  //           clearInterval(intervalStop);
-  //           intervalStop = null;
-  //         }
-  //       }, 20);
-  //     }
+            document.getElementsByClassName(
+              "sessionControlContainer"
+            )[0].style.opacity = op / 100;
+            document.getElementsByClassName(
+              "mainScreenButtons"
+            )[0].style.opacity = op / 100;
+          } else {
+            clearInterval(intervalStop);
+            intervalStop = null;
+          }
+        }, 20);
+      }
 
-  //     function increaseOpacity() {
-  //       if (!intervalStart) {
-  //         intervalStart = setInterval(() => {
-  //           // console.log("increaseOpacity", op);
+      function increaseOpacity() {
+        if (!intervalStart) {
+          intervalStart = setInterval(() => {
+            // console.log("increaseOpacity", op);
 
-  //           if (op < 100) {
-  //             op = op + 5;
-  //             Array.from(
-  //               document.getElementsByClassName("sessionSettings")
-  //             ).forEach((el) => (el.style.opacity = op / 100));
+            if (op < 100) {
+              op = op + 5;
+              Array.from(
+                document.getElementsByClassName("sessionSettings")
+              ).forEach((el) => (el.style.opacity = op / 100));
 
-  //             Array.from(
-  //               document.getElementsByClassName("settings_options")
-  //             ).forEach((el) => (el.style.opacity = op / 100));
+              Array.from(
+                document.getElementsByClassName("settings_options")
+              ).forEach((el) => (el.style.opacity = op / 100));
 
-  //             document.getElementsByClassName(
-  //               "sessionControlContainer"
-  //             )[0].style.opacity = op / 100;
-  //             document.getElementsByClassName(
-  //               "mainScreenButtons"
-  //             )[0].style.opacity = op / 100;
-  //           } else {
-  //             clearInterval(intervalStart);
-  //             intervalStart = null;
-  //           }
-  //         }, 50);
+              document.getElementsByClassName(
+                "sessionControlContainer"
+              )[0].style.opacity = op / 100;
+              document.getElementsByClassName(
+                "mainScreenButtons"
+              )[0].style.opacity = op / 100;
+            } else {
+              clearInterval(intervalStart);
+              intervalStart = null;
+            }
+          }, 50);
 
-  //         return intervalStart;
-  //       }
-  //     }
+          return intervalStart;
+        }
+      }
 
-  //     const mouse_stopped = () => {
-  //       // console.log("mouse_stopped");
+      const mouse_stopped = () => {
+        // console.log("mouse_stopped");
 
-  //       clearTimeout(timeOut);
+        clearTimeout(timeOut);
 
-  //       clearInterval(intervalStart);
-  //       decreaseOpacity();
-  //     };
+        clearInterval(intervalStart);
+        decreaseOpacity();
+      };
 
-  //     if (op < 100) {
-  //       increaseOpacity();
-  //       //   setTimeout(() => {
-  //       //     clearInterval(intrvl);
-  //       //   }, 1500);
-  //       // } else {
-  //       //   clearInterval(intervalStart);
-  //     }
+      if (op < 100) {
+        increaseOpacity();
+        //   setTimeout(() => {
+        //     clearInterval(intrvl);
+        //   }, 1500);
+        // } else {
+        //   clearInterval(intervalStart);
+      }
 
-  //     clearTimeout(timeOut);
-  //     timeOut = setTimeout(mouse_stopped, 7900);
-  //     clearInterval(intervalStop);
-  //   });
+      clearTimeout(timeOut);
+      timeOut = setTimeout(mouse_stopped, 7900);
+      clearInterval(intervalStop);
+    });
 
-  //   return document.body.removeEventListener("mousemove", evli);
-  // }, []);
+    return document.body.removeEventListener("mousemove", evli);
+  }, []);
 
   useEffect(() => {
     if (timerActive) {

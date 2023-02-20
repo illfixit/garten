@@ -8,7 +8,9 @@ const defBGColorArr = defBGColor
   .split(",")
   .map((el) => parseFloat(el));
 
-const [bgh, bgs, bgl] = defBGColorArr;
+let [bgh, bgs, bgl] = defBGColorArr;
+bgs = `${bgs}%`;
+bgl = `${bgl}%`;
 
 const defMainColor = getColor("mainColor");
 const defMainColorArr = defMainColor
@@ -18,10 +20,38 @@ const defMainColorArr = defMainColor
   .map((el) => el.trim());
 
 const LookSettings = (props) => {
-  const [mainColorInputValue, setMainColorInputValue] = useState(defMainColor);
-  const [bghValue, setBghValue] = useState(bgh);
-  const [bgsValue, setBgsValue] = useState(bgs);
-  const [bglValue, setBglValue] = useState(bgl);
+  const [mainColorInputValue, setMainColorInputValue] = useState(
+    (localStorage.getItem("mch") &&
+      localStorage
+        .getItem("mch")
+        .substring(1, localStorage.getItem("mch").length - 1)) ||
+      defMainColorArr[0]
+  );
+
+  document.documentElement.style.setProperty(
+    "--mainColor-h",
+    mainColorInputValue
+  );
+
+  const [bghValue, setBghValue] = useState(
+    JSON.parse(localStorage.getItem("bgh")) || bgh
+  );
+  const [bgsValue, setBgsValue] = useState(
+    JSON.parse(localStorage.getItem("bgs")) || bgs
+  );
+  const [bglValue, setBglValue] = useState(
+    JSON.parse(localStorage.getItem("bgl")) || bgl
+  );
+
+  document.documentElement.style.setProperty("--backgroundColor-h", bghValue);
+
+  document.documentElement.style.setProperty("--backgroundColor-s", bgsValue);
+
+  document.documentElement.style.setProperty("--backgroundColor-l", bglValue);
+
+  localStorage.setItem("bgh", JSON.stringify(bghValue));
+  localStorage.setItem("bgs", JSON.stringify(bgsValue));
+  localStorage.setItem("bgl", JSON.stringify(bglValue));
 
   // const [mainColorFull, setMainColorFull] = useState(false);
   // const [BgColorFull, setBgColorFull] = useState(false);
@@ -33,6 +63,8 @@ const LookSettings = (props) => {
   const changeMainColor = (e) => {
     setMainColorInputValue(e.target.value);
     setColor("mainColor", "h", e.target.value);
+
+    localStorage.setItem("mch", JSON.stringify(e.target.value));
   };
 
   //   const changeBGColor = (e) => {
@@ -44,6 +76,8 @@ const LookSettings = (props) => {
     setMainColorInputValue(defMainColorArr[0]);
     setColor("mainColor", "h", defMainColorArr[0]);
     document.getElementById("mainColor").value = defMainColorArr[0];
+
+    localStorage.setItem("mch", JSON.stringify(defMainColorArr[0]));
   };
 
   const resetBGColor = (e) => {
@@ -52,16 +86,22 @@ const LookSettings = (props) => {
     setBglValue(bgl);
 
     setColor("backgroundColor", "h", bgh);
-    setColor("backgroundColor", "s", bgs + "%");
-    setColor("backgroundColor", "l", bgl + "%");
+    setColor("backgroundColor", "s", bgs);
+    setColor("backgroundColor", "l", bgl);
+
+    console.log(bgh, bgs, bgl);
+
+    localStorage.setItem("bgh", JSON.stringify(bgh));
+    localStorage.setItem("bgs", JSON.stringify(bgs));
+    localStorage.setItem("bgl", JSON.stringify(bgl));
 
     document.getElementById("backgroundColor-h").value = bgh;
-    if (document.getElementById("backgroundColor-s")) {
-      document.getElementById("backgroundColor-s").value = bgs;
-    }
-    if (document.getElementById("backgroundColor-l")) {
-      document.getElementById("backgroundColor-l").value = bgl;
-    }
+    // if (document.getElementById("backgroundColor-s")) {
+    document.getElementById("backgroundColor-s").value = parseInt(bgs);
+    // }
+    // if (document.getElementById("backgroundColor-l")) {
+    document.getElementById("backgroundColor-l").value = parseInt(bgl);
+    // }
   };
 
   const changeColor = (e) => {
@@ -71,18 +111,22 @@ const LookSettings = (props) => {
     if (id === "backgroundColor-h") {
       setBghValue(value);
       setColor(id.split("-")[0], "h", value);
+      localStorage.setItem("bgh", JSON.stringify(value));
     }
 
     if (id === "backgroundColor-s") {
-      setBgsValue(value);
+      setBgsValue(value + "%");
 
-      setColor(id.split("-")[0], "s", value + "%");
+      setColor(id.split("-")[0], "s", `${value}%`);
+      localStorage.setItem("bgs", JSON.stringify(`${value}%`));
     }
 
     if (id === "backgroundColor-l") {
-      setBglValue(value);
+      setBglValue(value + "%");
 
-      setColor(id.split("-")[0], "l", value + "%");
+      setColor(id.split("-")[0], "l", `${value}%`);
+      // document.getElementById("backgroundColor-l").value = bglValue;
+      localStorage.setItem("bgl", JSON.stringify(`${value}%`));
     }
   };
 
@@ -133,7 +177,7 @@ const LookSettings = (props) => {
               id="backgroundColor-s"
               type="range"
               max="100"
-              defaultValue={bgsValue}
+              defaultValue={parseFloat(bgsValue)}
               onChange={changeColor}
             ></input>
           </div>
@@ -145,7 +189,7 @@ const LookSettings = (props) => {
               id="backgroundColor-l"
               type="range"
               max="100"
-              defaultValue={bglValue}
+              defaultValue={parseFloat(bglValue)}
               onChange={changeColor}
             ></input>
           </div>

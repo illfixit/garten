@@ -416,7 +416,7 @@ body::-webkit-scrollbar {
   background-color: var(--mainColor);
   font-size: 1.35rem;
   /* min-width: 20vh; */
-  padding: 1rem 3rem;
+  padding: 1rem 0rem;
   width: 12rem;
   max-width: 35vw;
   color: white;

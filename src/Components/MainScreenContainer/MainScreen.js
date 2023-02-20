@@ -6,6 +6,7 @@ import StartStopButton from "./StartStopButton";
 import SessionSettings from "./SessionSettings";
 import GIFSettings from "./GIFSettings";
 import LookSettings from "./LookSettings";
+import FontSettings from "./FontSettings";
 
 import ToggleViewButton from "./ToggleViewButton";
 
@@ -162,6 +163,7 @@ const MainScreen = (props) => {
             setCurrentGIF={setCurrentPauseGIF}
           />
         )}
+        <FontSettings />
       </div>
     </div>
   );

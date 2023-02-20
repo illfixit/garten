@@ -41,7 +41,7 @@ const getColor = (colorName, type) => {
 };
 
 const setColor = (colorName, type, value) => {
-  console.log(colorName, type, value);
+  // console.log(colorName, type, value);
   document
     .querySelector(":root")
     .style.setProperty(`--${colorName}${type ? "-" + type : ""}`, value);

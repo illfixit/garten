@@ -13,7 +13,8 @@ const FontSettings = (props) => {
   const addFont = (font) => {
     let fontName;
     if (!font || typeof font != "string") {
-      fontName = document.getElementById("font_url_input").value;
+      fontName = document.getElementById("font_url_input").value.trim();
+      document.getElementById("font_url_input").value = "";
     } else {
       fontName = font;
     }
@@ -36,22 +37,32 @@ const FontSettings = (props) => {
         `https://fonts.googleapis.com/css?family=${fontFamily}`
       );
       document.head.appendChild(link);
-      if (!fontName in fontsArray) {
+
+      if (!fontsArray.includes(font)) {
+        // console.log(fontName, fontsArray);
         setFontsArray([...fontsArray, fontName]);
       }
     }
   };
 
   const useFont = (event) => {
-    let font = event.target.id.split("-")[1];
+    console.log(event.target);
+    let font = event.target.parentElement.id.split("-")[1];
     // console.log(font);
     document.querySelector(":root").style.setProperty("--font", font);
   };
 
-  const deleteFont = () => {};
+  const deleteFont = (event) => {
+    if (fontsArray.length > 1) {
+      let font = event.target.parentElement.id.split("-")[1];
+      console.log(font);
+      let arr = fontsArray.filter((f) => f !== font);
+      setFontsArray(arr);
+    }
+  };
 
   // {getComputedStyle(document.documentElement).getPropertyValue("--font")}
-  //   console.log(fontsArray);
+  //   console.log("fontsArray", fontsArray);
 
   return (
     <div className="sessionSettings">
@@ -64,12 +75,8 @@ const FontSettings = (props) => {
               <p className="font_preview" style={{ fontFamily: font }}>
                 25:50
               </p>
-              <div className="settings_button_container">
-                <button
-                  id={`font-${font}`}
-                  className="settings_button"
-                  onClick={useFont}
-                >
+              <div className="settings_button_container" id={`font-${font}`}>
+                <button className="settings_button" onClick={useFont}>
                   Use
                 </button>
                 <button
@@ -88,7 +95,7 @@ const FontSettings = (props) => {
         <input
           id="font_url_input"
           className="background_input"
-          placeholder="Google Font's name (Robot, Lora etc.)"
+          placeholder="Google Font's name (Roboto, Lora etc.)"
         ></input>
         <button className="settings_button" onClick={addFont}>
           Add

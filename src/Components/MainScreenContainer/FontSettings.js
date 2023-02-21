@@ -110,7 +110,7 @@ const FontSettings = (props) => {
         <input
           id="font_url_input"
           className="background_input"
-          placeholder="Google Font's name (Roboto, Lora etc.)"
+          placeholder="Google Font's name (Norican, Karla etc.)"
         ></input>
         <button className="settings_button" onClick={addFont}>
           Add

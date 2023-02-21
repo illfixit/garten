@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
 
 const FontSettings = (props) => {
-  let [fontsArray, setFontsArray] = useState(["Norican", "Karla", "Open Sans"]);
+  let [fontsArray, setFontsArray] = useState(
+    JSON.parse(localStorage.getItem("fonts")) || [
+      "Norican",
+      "Karla",
+      "Open Sans",
+    ]
+  );
+
+  let [currentFont, setCurrentFont] = useState(["Norican"]);
 
   useEffect(() => {
     // console.log(fontsArray);
     if (fontsArray.length > 0) {
       fontsArray.forEach((font) => addFont(font));
+      localStorage.setItem("fonts", JSON.stringify(fontsArray));
     }
   }, []);
 
@@ -40,7 +49,9 @@ const FontSettings = (props) => {
 
       if (!fontsArray.includes(font)) {
         // console.log(fontName, fontsArray);
-        setFontsArray([...fontsArray, fontName]);
+        let arr = [...fontsArray, fontName];
+        setFontsArray(arr);
+        localStorage.setItem("fonts", JSON.stringify(arr));
       }
     }
   };
@@ -48,6 +59,7 @@ const FontSettings = (props) => {
   const useFont = (event) => {
     console.log(event.target);
     let font = event.target.parentElement.id.split("-")[1];
+    setCurrentFont(font);
     // console.log(font);
     document.querySelector(":root").style.setProperty("--font", font);
   };
@@ -56,8 +68,11 @@ const FontSettings = (props) => {
     if (fontsArray.length > 1) {
       let font = event.target.parentElement.id.split("-")[1];
       console.log(font);
-      let arr = fontsArray.filter((f) => f !== font);
-      setFontsArray(arr);
+      if (font != currentFont) {
+        let arr = fontsArray.filter((f) => f !== font);
+        setFontsArray(arr);
+        localStorage.setItem("fonts", JSON.stringify(arr));
+      }
     }
   };
 

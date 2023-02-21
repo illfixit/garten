@@ -57,7 +57,6 @@ const FontSettings = (props) => {
   };
 
   const useFont = (event) => {
-    console.log(event.target);
     let font = event.target.parentElement.id.split("-")[1];
     setCurrentFont(font);
     // console.log(font);
@@ -68,7 +67,7 @@ const FontSettings = (props) => {
     if (fontsArray.length > 1) {
       let font = event.target.parentElement.id.split("-")[1];
       console.log(font);
-      if (font != currentFont) {
+      if (font !== currentFont) {
         let arr = fontsArray.filter((f) => f !== font);
         setFontsArray(arr);
         localStorage.setItem("fonts", JSON.stringify(arr));

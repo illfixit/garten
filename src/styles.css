@@ -374,6 +374,7 @@ body::-webkit-scrollbar {
   background-position: 50%;
   -webkit-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
+  box-shadow: inset 0px 1px 20px 10px rgb(0 0 0 / 55%);
 }
 
 
@@ -388,8 +389,9 @@ body::-webkit-scrollbar {
 
   display: flex;
   position: absolute;
-  font-size: min(min(16vw, 6rem), 18vh);
+  font-size: min(16vw, 6rem, 18vh);
   width: 100%;
+  /* margin-left: min(17%, 17vw, 17vh); */
   height: 100%;
   display: flex;
   justify-content: center;
@@ -397,7 +399,8 @@ body::-webkit-scrollbar {
   /* translate: 0 2vw; */
   text-shadow: #252627 2.5px 2.5px;
   border-radius: 50%;
-  box-shadow: inset 0px 1px 20px 10px rgb(0 0 0 / 55%);
+
+  
 }
 
 .timerText {
@@ -414,6 +417,18 @@ body::-webkit-scrollbar {
   
   /* background-color: red; */
 }
+
+.timer_symbol {
+  height: auto;
+  min-width: min(10vw, 3.5rem, 11vh);
+  max-width: min(10vw, 3.5rem, 11vh);
+
+}
+
+.timer_symbol_colon {
+  width: min(5vw, 1.6rem, 5.5vh);
+}
+
 
 .mainScreenButtons {
   background-color: var(--mainColor);
@@ -691,3 +706,4 @@ body::-webkit-scrollbar {
   text-shadow: #252627 2.5px 2.5px;
 
 }
+

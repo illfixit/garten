@@ -212,7 +212,11 @@ const Timer = ({
         style={{ backgroundImage: `url(${GIFSArray[currentGIF]})` }}
       ></div>
       <div className="timer">
-        {formatTime(minutes)}:{formatTime(seconds)}
+        <span className="timer_symbol">{formatTime(minutes)[0]}</span>
+        <span className="timer_symbol">{formatTime(minutes)[1]}</span>
+        <span className="timer_symbol_colon">:</span>
+        <span className="timer_symbol">{formatTime(seconds)[0]}</span>
+        <span className="timer_symbol">{formatTime(seconds)[1]}</span>
       </div>
       <div className="timerText">
         {currentActivity === "session"

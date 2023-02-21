@@ -214,6 +214,9 @@ const Timer = ({
       <div className="timer">
         <span className="timer_symbol">{formatTime(minutes)[0]}</span>
         <span className="timer_symbol">{formatTime(minutes)[1]}</span>
+        {formatTime(minutes)[2] ? (
+          <span className="timer_symbol">{formatTime(minutes)[2]}</span>
+        ) : null}
         <span className="timer_symbol_colon">:</span>
         <span className="timer_symbol">{formatTime(seconds)[0]}</span>
         <span className="timer_symbol">{formatTime(seconds)[1]}</span>

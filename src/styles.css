@@ -408,7 +408,7 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: min(min(6vw, 3.5rem), 8vh);
+  font-size: min(5vw, 3.5rem, 7vh);
   font-family: var(--font), cursive;
   translate: 0 min(6rem, 12vw, 12vh);
   z-index: 7;
@@ -419,14 +419,20 @@ body::-webkit-scrollbar {
 }
 
 .timer_symbol {
-  height: auto;
-  min-width: min(10vw, 3.5rem, 11vh);
-  max-width: min(10vw, 3.5rem, 11vh);
+  /* height: auto; */
+  min-width: min(10vw, 5rem, 10vh);
+  max-width: min(10vw, 5rem, 10vh);
 
 }
 
 .timer_symbol_colon {
-  width: min(5vw, 1.6rem, 5.5vh);
+  /* min-width: min(3vw, 1.2rem, 4vh); */
+  /* max-width: min(3vw, 1.2rem, 4vh); */
+  width: 0.3rem;
+  display: flex;
+  justify-content: center;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
 }
 
 

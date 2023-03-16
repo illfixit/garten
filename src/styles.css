@@ -408,7 +408,7 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: min(5vw, 3.5rem, 7vh);
+  font-size: min(7vw, 3.5em, 7vh);
   font-family: var(--font), cursive;
   translate: 0 min(6rem, 12vw, 12vh);
   z-index: 7;
@@ -420,8 +420,9 @@ body::-webkit-scrollbar {
 
 .timer_symbol {
   /* height: auto; */
-  min-width: min(10vw, 5rem, 10vh);
-  max-width: min(10vw, 5rem, 10vh);
+  /* min-width: min(10vw, 1em);
+  max-width: min(10vw, 1em); */
+  width: 0.65em;
 
 }
 

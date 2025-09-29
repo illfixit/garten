@@ -9,6 +9,7 @@ import LookSettings from "./LookSettings";
 import FontSettings from "./FontSettings";
 
 import ToggleViewButton from "./ToggleViewButton";
+import ToggleSettingsButton from "./ToggleSettingsButton";
 
 import SessionPauseButton from "./SessionPauseButton";
 
@@ -26,7 +27,6 @@ const MainScreen = (props) => {
   useEffect(() => {
     if (
       localStorage.getItem("pauseGIFSArray") === null ||
-      localStorage.getItem("pauseGIFSArray") === [] ||
       localStorage.getItem("pauseGIFSArray") === undefined
     ) {
       localStorage.setItem(
@@ -39,7 +39,6 @@ const MainScreen = (props) => {
 
     if (
       localStorage.getItem("sessionGIFSArray") === null ||
-      localStorage.getItem("sessionGIFSArray") === [] ||
       localStorage.getItem("sessionGIFSArray") === undefined
     ) {
       localStorage.setItem(
@@ -130,7 +129,11 @@ const MainScreen = (props) => {
           setAutoSwitch={setAutoSwitch}
         />
 
+      </div>
+      
+      <div className="toggleButtonsContainer">
         <ToggleViewButton />
+        <ToggleSettingsButton />
       </div>
       <div className="secondaryComponents">
         <SessionSettings

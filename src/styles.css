@@ -483,15 +483,35 @@ body::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
   position: relative;
-  /* background-color: var(--mainColor); */
+  background-color: var(--mainColor);
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   cursor: pointer;
+  color: white;
+  box-shadow: 0px 4px 0px var(--mainColorShadow);
+  border: 2px solid var(--mainColorBorder);
+  transition: all 0.2s ease;
+  transform: none !important;
+  -webkit-transform: none !important;
+}
 
-  /* transform: rotate(90deg) translateY(-0.6rem); */
-    transform: rotate(270deg) translateY(-0.38rem);
-    -webkit-transform: rotate(270deg) translateY(-0.38rem);
+.toggleViewButton svg {
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.toggleViewButton:hover {
+  background-color: var(--mainColorDark);
+  transform: translateY(-1px) scale(1.05);
+  -webkit-transform: translateY(-1px) scale(1.05);
+  box-shadow: 0px 5px 0px var(--mainColorShadow);
+}
+
+.toggleViewButton:active {
+  transform: translateY(2px) scale(0.95);
+  -webkit-transform: translateY(2px) scale(0.95);
+  box-shadow: 0px 2px 0px var(--mainColorShadow);
 }
 
 .toggleSettingsButton {
@@ -500,11 +520,26 @@ body::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
   position: relative;
-  /* background-color: var(--mainColor); */
+  background-color: var(--mainColor);
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   cursor: pointer;
+  color: white;
+  font-size: 1.1rem;
+  box-shadow: 0px 4px var(--mainColorShadow);
+  border: 2px solid var(--mainColorBorder);
+  transition: all 0.2s ease;
+}
+
+.toggleSettingsButton:hover {
+  background-color: var(--mainColorDark);
+  transform: scale(1.05);
+}
+
+.toggleSettingsButton:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px var(--mainColorShadow);
 }
 
 .settingsContainer {

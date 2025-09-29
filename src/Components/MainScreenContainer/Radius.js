@@ -10,7 +10,7 @@ const Radius = (props) => {
   useEffect(() => {
     // console.log("toggle Timer: active: ", props.timerActive, step.current);
     rotateCircle(document.querySelector(".radius"), step.current * interval);
-  }, [props.timerActive]);
+  }, [props.timerActive, interval]);
 
   const rotateCircle = (element, degree) => {
     let transformString = `rotate(${degree}deg) scale(1) skewX(0deg) skewY(0deg)`;

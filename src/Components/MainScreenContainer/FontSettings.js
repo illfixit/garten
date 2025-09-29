@@ -17,6 +17,7 @@ const FontSettings = (props) => {
       fontsArray.forEach((font) => addFont(font));
       localStorage.setItem("fonts", JSON.stringify(fontsArray));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addFont = (font) => {

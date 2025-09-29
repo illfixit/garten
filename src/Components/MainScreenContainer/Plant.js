@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Radius from "./Radius";
 import Timer from "./Timer";
 
 const Plant = (props) => {
   // console.log(props);
 
-  let plantContainerBoundaries = null;
+  const plantContainerBoundaries = useRef(null);
 
   useEffect(() => {
     if (document.querySelector(".plantContainer")) {
-      plantContainerBoundaries = document
+      plantContainerBoundaries.current = document
         .querySelector(".plantContainer")
         .getBoundingClientRect();
     }
@@ -22,7 +22,7 @@ const Plant = (props) => {
         id={props.currentActivity}
       >
         <Radius
-          plantContainerBoundaries={plantContainerBoundaries}
+          plantContainerBoundaries={plantContainerBoundaries.current}
           timerActive={props.timerActive}
           startStep={props.startStep}
           setStartStep={props.setStartStep}

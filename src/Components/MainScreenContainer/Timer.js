@@ -151,6 +151,7 @@ const Timer = ({
     }
 
     return () => clearInterval(intrvl);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timerActive]);
 
   // console.log(totalSeconds);
